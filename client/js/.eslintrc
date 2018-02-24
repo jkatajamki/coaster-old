@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "no-shadow": 0,
+    "react/prop-types": 0
+  },
+  "env": {
+    "browser": true
+  }
+}
