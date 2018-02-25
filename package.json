@@ -4,18 +4,22 @@
   "description": "Coaster.",
   "scripts": {
     "lint": "eslint --ext js --ext jsx .",
-    "lint:fix": "eslint --ext js --ext jsx --fix ."
+    "lint:fix": "eslint --ext js --ext jsx --fix .",
+    "start": "NODE_ENV=development babel-node server/server"
   },
   "dependencies": {
     "ajv": "^6.1.1",
     "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.2",
+    "babel-plugin-module-resolver": "^3.1.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "chokidar": "^2.0.2",
     "css-loader": "^0.28.10",
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.7.2",
