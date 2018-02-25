@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint --ext js --ext jsx .",
     "lint:fix": "eslint --ext js --ext jsx --fix .",
-    "start": "NODE_ENV=development babel-node server/server"
+    "start": "NODE_ENV=development babel-node server/server.dev"
   },
   "dependencies": {
     "ajv": "^6.1.1",
