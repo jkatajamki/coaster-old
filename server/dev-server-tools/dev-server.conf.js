@@ -6,7 +6,7 @@ const devServerConfig = {
   historyApiFallback: true,
   proxy: {
     '/api': {
-      target: `http://localhost:${ API_PORT }`,
+      target: `http://localhost:${API_PORT}`,
       ws: true,
     },
   },

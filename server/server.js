@@ -1,12 +1,8 @@
-import http from 'http';
-import parseurl from 'parseurl';
+import { NestFactory } from '@nestjs/core';
+import AppModule from './modules/app.module';
 
-const server = http.createServer((req, res) => {
-  const url = parseurl(req);
+function bootstrap() {
+  return NestFactory.create(AppModule);
+}
 
-  res.statusCode = 200;
-  const message = `We live... ${ JSON.stringify(url) }`;
-  res.end(message);
-});
-
-export default server;
+export default bootstrap;

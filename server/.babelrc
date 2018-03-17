@@ -4,7 +4,8 @@
       "targets": {
         "node": "9.5.0"
       }
-    }]
+    }],
+    "stage-0"
   ],
   "plugins": [
     ["module-resolver", {
@@ -12,6 +13,7 @@
       "alias": {
         "common": "./common"
       }
-    }]
+    }],
+    "transform-decorators-legacy"
   ]
 }
