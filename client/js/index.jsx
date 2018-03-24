@@ -1,6 +1,18 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router';
+import { BrowserRouter } from 'react-router-dom'
+import Root from './containers/root';
+import createHistory from 'history/createBrowserHistory';
+import configureStore from './store/configure-store';
 
-const Root = () => (<div>Hello world t: react</div>);
+const store = configureStore();
+const history = createHistory();
 
-ReactDom.render(<Root />, document.querySelector('#root'));
+render(
+  <Provider store={store}>
+    <Root store={store} history={history}/>
+  </Provider>,
+  document.querySelector('#root')
+);
