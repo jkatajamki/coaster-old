@@ -1,0 +1,64 @@
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+
+const config = {
+  entry: {
+    app: [
+      'babel-polyfill',
+      './client/js/index.jsx',
+      './client/style/main.scss',
+    ],
+  },
+
+  output: {
+    publicPath: '/',
+    path: path.resolve(__dirname, 'build/client'),
+    filename: '[hash].js',
+  },
+
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss'],
+    modules: ['node_modules', path.resolve(__dirname, 'client/js')],
+    alias: {
+      common: path.resolve(__dirname, 'common'),
+    },
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './client/index.html',
+      filename: 'index.html',
+      inject: 'body',
+      inlineSource: '\\.css$',
+    }),
+
+    new HtmlWebpackInlineSourcePlugin(),
+
+    new webpack.DefinePlugin({
+      __dev: false,
+    }),
+
+    new ExtractTextPlugin('[contenthash].css'),
+  ],
+
+  devtool: '',
+
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.s[ac]ss$/,
+        loader: ExtractTextPlugin.extract('css-loader!postcss-loader!sass-loader'),
+      },
+    ],
+  },
+};
+
+module.exports = config;
