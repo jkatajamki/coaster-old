@@ -14,7 +14,7 @@ const config = {
   },
 
   output: {
-    publicPath: '/',
+    publicPath: '',
     path: path.resolve(__dirname, 'build/client'),
     filename: '[hash].js',
   },
