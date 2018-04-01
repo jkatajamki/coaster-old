@@ -11,7 +11,9 @@ class Albums extends React.Component {
   render() {
     return(
       <div>
-        <h3>Albums</h3>
+        <h1>Albums</h1>
+
+
       </div>
     )
   }

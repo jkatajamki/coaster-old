@@ -1,6 +1,14 @@
-const createAlbum = album => ({
-  type: 'CREATE_ALBUM',
-  album,
+const setAlbumData = albums => ({
+  type: 'SET_ALBUM_DATA',
+  data: albums,
 });
 
-export default createAlbum;
+const setAlbumFilter = filter => ({
+  type: 'SET_ALBUM_FILTER',
+  data: filter,
+});
+
+export {
+  setAlbumData,
+  setAlbumFilter,
+};
