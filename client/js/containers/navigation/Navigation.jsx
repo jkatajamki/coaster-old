@@ -1,5 +1,5 @@
 import React from 'react';
-import menuItems from '../items/menu-items';
+import menuItems from '../../items/menu-items';
 
 const Navigation = () => {
   return(
