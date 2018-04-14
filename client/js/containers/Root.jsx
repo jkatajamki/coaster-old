@@ -1,10 +1,10 @@
 import React from 'react';
 import { ConnectedRouter } from 'react-router-redux';
 import { Route } from 'react-router';
-import Navigation from './navigation/navigation';
-import Home from '../components/home/home';
-import Albums from '../components/albums/albums';
-import About from "../components/about/about";
+import Navigation from './navigation/Navigation';
+import Home from '../components/home/Home';
+import Albums from '../components/albums/Albums';
+import About from "../components/about/About";
 
 const Root = ({ history }) => {
   return (

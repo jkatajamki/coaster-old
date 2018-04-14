@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import albumReducer from './album-reducers';
+import albumReducer from './AlbumReducers';
 
 export default combineReducers({
   albums: albumReducer,

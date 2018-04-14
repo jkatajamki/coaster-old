@@ -1,5 +1,6 @@
 import React from 'react';
-import Album from 'album';
+import Album from './Album';
+import PropTypes from 'prop-types';
 
 const Albums = ({ albums, onAlbumClick }) => (
   <div>

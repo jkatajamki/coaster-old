@@ -1,5 +1,5 @@
-import createReducer from '../utilities/create-reducer';
-import AlbumState from '../records/album-state';
+import createReducer from '../utilities/createReducer';
+import AlbumState from '../records/AlbumState';
 
 export default createReducer(new AlbumState(), {
   SET_ALBUM_DATA: (state, albums) => state
