@@ -1,14 +1,9 @@
-const setAlbumData = albums => ({
+export const setAlbumData = albums => ({
   type: 'SET_ALBUM_DATA',
   data: albums,
 });
 
-const setAlbumFilter = filter => ({
+export const setAlbumFilter = filter => ({
   type: 'SET_ALBUM_FILTER',
   data: filter,
 });
-
-export {
-  setAlbumData,
-  setAlbumFilter,
-};

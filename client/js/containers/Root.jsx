@@ -3,8 +3,8 @@ import { ConnectedRouter } from 'react-router-redux';
 import { Route } from 'react-router';
 import Navigation from './navigation/Navigation';
 import Home from '../components/home/Home';
-import Albums from '../components/albums/Albums';
 import About from "../components/about/About";
+import FilteredAlbumList from './filtered-album-list/FilteredAlbumList';
 
 const Root = ({ history }) => {
   return (
@@ -13,7 +13,7 @@ const Root = ({ history }) => {
       <ConnectedRouter history={history} >
         <div>
           <Route exact path="/" component={Home} />
-          <Route path="/albums" component={Albums} />
+          <Route path="/albums" component={FilteredAlbumList} />
           <Route path="/about" component={About} />
         </div>
       </ConnectedRouter>

@@ -10,4 +10,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   onClick: () => dispatch(setAlbumFilter(ownProps.filter))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Link);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Link);

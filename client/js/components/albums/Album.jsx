@@ -9,8 +9,8 @@ const Album = ({onClick, isOwned, title}) => (
 
 Album.propTypes = {
   onClick: PropTypes.func.isRequired,
-  isOwned: PropTypes.func.isRequired,
-  title: PropTypes.func.isRequired,
+  isOwned: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Album;

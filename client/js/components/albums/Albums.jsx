@@ -16,12 +16,13 @@ const Albums = ({ albums, onAlbumClick }) => (
 );
 
 Albums.propTypes = {
-  albums: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    isOwned: PropTypes.bool.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired)
-    .isRequired,
+  albums: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      isOwned: PropTypes.bool.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   onAlbumClick: PropTypes.func.isRequired,
 };
 
