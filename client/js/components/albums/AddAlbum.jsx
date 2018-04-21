@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import bindState from '../../utilities/bindState';
+import { addAlbum } from '../../actions/AlbumActions';
+import stateToProps from '../../utilities/stateToProps';
+
+const getResetFormState = () => ({
+  title: '',
+});
 
 class AddAlbum extends Component {
-  state = {
-    title: '',
-  };
+  state = getResetFormState();
 
   bind = bindState(this);
 
@@ -17,7 +22,7 @@ class AddAlbum extends Component {
       return;
     }
 
-
+    this.props.addAlbum(title);
   };
 
   render() {
@@ -40,3 +45,7 @@ class AddAlbum extends Component {
     );
   };
 }
+
+export default connect(stateToProps('albums'), {
+  addAlbum,
+})(AddAlbum);

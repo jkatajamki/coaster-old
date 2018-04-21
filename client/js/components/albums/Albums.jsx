@@ -1,28 +1,26 @@
 import React from 'react';
 import Album from './Album';
 import PropTypes from 'prop-types';
+import AddAlbum from './AddAlbum';
 
 const Albums = ({ albums, onAlbumClick }) => (
   <div>
     <h1>Albums</h1>
 
     <ul>
-      {albums.map((album, index) => (
-        <Album key={index} {...album} onClick={() => onAlbumClick(index)} />
+      {albums.map(({ isOwned, title }, index) => (
+        <Album key={index} {...({ isOwned, title })} onClick={() => onAlbumClick(index)} />
       ))}
     </ul>
 
+    <div id="addAlbum">
+      <AddAlbum></AddAlbum>
+    </div>
   </div>
 );
 
 Albums.propTypes = {
-  albums: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      isOwned: PropTypes.bool.isRequired,
-      title: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
+  albums: PropTypes.array,
   onAlbumClick: PropTypes.func.isRequired,
 };
 

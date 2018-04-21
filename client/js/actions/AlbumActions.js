@@ -12,6 +12,7 @@ export const setAlbumFilter = filter => ({
 
 export const addAlbum = title => async (dispatch, getState) => {
   const state = getState();
+  const albumState = state.albums;
 
   const newAlbum = new AlbumRecord({
     id: state.albums.length + 1,
@@ -19,7 +20,7 @@ export const addAlbum = title => async (dispatch, getState) => {
     isOwned: false,
   });
 
-  const albums = [...state.albums, newAlbum];
+  const albums = [...albumState.albums, newAlbum];
 
   dispatch({
     type: 'SET_ALBUM_DATA',

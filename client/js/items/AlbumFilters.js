@@ -6,9 +6,9 @@ const albumFilters = {
 
 export const getAlbumsFiltered = (albums, filter) => {
   const filtersMap = {
-    'SHOW_ALL': albums,
-    'SHOW_OWNED': albums.filter(album => album.isOwned),
-    'SHOW_NON_OWNED': albums.filter(album => !album.isOwned),
+    SHOW_ALL: albums,
+    SHOW_OWNED: albums.filter(album => album.isOwned),
+    SHOW_NON_OWNED: albums.filter(album => !album.isOwned),
   };
 
   return filtersMap[filter];
