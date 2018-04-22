@@ -1,7 +1,7 @@
 import React from 'react';
 import Album from './Album';
 import PropTypes from 'prop-types';
-import AddAlbum from './AddAlbum';
+import AddAlbum from '../../containers/add-album/AddAlbum';
 
 const Albums = ({ albums, onAlbumClick }) => (
   <div>
@@ -14,7 +14,7 @@ const Albums = ({ albums, onAlbumClick }) => (
     </ul>
 
     <div id="addAlbum">
-      <AddAlbum></AddAlbum>
+      <AddAlbum/>
     </div>
   </div>
 );
