@@ -11,11 +11,11 @@ const Root = ({ history }) => {
     <div>
       <Navigation />
       <ConnectedRouter history={history} >
-        <div>
+        <main>
           <Route exact path="/" component={Home} />
           <Route path="/albums" component={FilteredAlbumList} />
           <Route path="/about" component={About} />
-        </div>
+        </main>
       </ConnectedRouter>
     </div>
   );

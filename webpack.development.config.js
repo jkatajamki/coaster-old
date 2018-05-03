@@ -46,6 +46,7 @@ const config = {
     loaders: [
       { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.s[ac]ss$/, loader: ['style-loader', 'css-loader', 'sass-loader'], exclude: /node_modules/ },
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
     ],
   },
 };

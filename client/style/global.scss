@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 html, body {
   height: 100%;
   min-height: 100%;
@@ -7,9 +9,30 @@ html, body {
 body {
   position: relative;
   color: #484848;
+  background-color: $primary-background;
+}
+
+.btn-primary {
+  background-color: $primary;
+  border-color: $primary;
+}
+
+.btn-primary:hover {
+  background-color: $primary-darker;
+  border-color: $primary;
 }
 
 #main {
   min-height: 100%;
   height: auto;
+}
+
+.jumbotron {
+  background-color: $light-background;
+}
+
+.buttons-area {
+  button {
+    margin: 0 3px;
+  }
 }
