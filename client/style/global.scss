@@ -22,6 +22,10 @@ body {
   border-color: $primary;
 }
 
+.btn-primary:active {
+  outline-color: orange;
+}
+
 #main {
   min-height: 100%;
   height: auto;

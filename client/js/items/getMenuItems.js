@@ -1,4 +1,4 @@
-const menuItems = () => [
+const getMenuItems = () => [
   {
     id: 1,
     url: '/',
@@ -16,4 +16,4 @@ const menuItems = () => [
   },
 ];
 
-export default menuItems;
+export default getMenuItems;

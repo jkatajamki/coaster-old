@@ -1,0 +1,18 @@
+@import '../variables';
+
+.navbar-brand-text {
+  color: $light-background;
+}
+
+.navbar-toggler {
+  border: 0;
+
+  .navbar-toggler-text {
+    color: $orange;
+  }
+}
+
+.nav-toggle-icon {
+  font-size: 2em;
+  color: $orange;
+}

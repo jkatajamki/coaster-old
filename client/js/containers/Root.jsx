@@ -8,16 +8,14 @@ import FilteredAlbumList from './filtered-album-list/FilteredAlbumList';
 
 const Root = ({ history }) => {
   return (
-    <div>
-      <Navigation />
-      <ConnectedRouter history={history} >
-        <main>
-          <Route exact path="/" component={Home} />
-          <Route path="/albums" component={FilteredAlbumList} />
-          <Route path="/about" component={About} />
-        </main>
-      </ConnectedRouter>
-    </div>
+    <ConnectedRouter history={history} >
+      <main>
+        <Navigation />
+        <Route exact path="/" component={Home} />
+        <Route path="/albums" component={FilteredAlbumList} />
+        <Route path="/about" component={About} />
+      </main>
+    </ConnectedRouter>
   );
 };
 
