@@ -1,5 +1,6 @@
 @import '../variables';
 
+
 .navbar-brand-text {
   color: $light-background;
 }
@@ -15,4 +16,20 @@
 .nav-toggle-icon {
   font-size: 2em;
   color: $orange;
+}
+
+.navbar {
+  li.nav-link {
+    a {
+      color: $light-background;
+      padding: 0.1em 0;
+    }
+  }
+
+  li.active {
+    a {
+      border-bottom: 2px solid $orange;
+      font-size: 1.25em;
+    }
+  }
 }
