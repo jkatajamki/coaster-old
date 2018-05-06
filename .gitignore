@@ -1,3 +1,6 @@
 node_modules/
 .idea
 build/
+
+# config files with .example files representing them in versioning
+server/config/data-source.config.js
