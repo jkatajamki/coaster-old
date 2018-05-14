@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "coasterapp",
+    "password": "Coaster.",
+    "database": "coaster",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres",
+    "logging": false,
+    "force": true,
+    "timezone": "Europe/Helsinki"
+  },
+  "production": {
+    "username": "coasterapp",
+    "password": "Coaster.",
+    "database": "coaster",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres",
+    "logging": false,
+    "force": true,
+    "timezone": "+02:00"
+  }
+}

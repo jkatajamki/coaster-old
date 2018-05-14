@@ -3,8 +3,10 @@ import path from 'path';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import initRoutes from './routes/';
+import initDataAccess from './data-access/init-data-access';
 
-const boostrapApp = () => {
+const boostrapApp = async () => {
   const app = express();
 
   const loggerMode = 'development,testing'.includes(process.env.NODE_ENV) ? 'dev' : 'production';
@@ -14,21 +16,8 @@ const boostrapApp = () => {
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, 'public')));
 
-  app.use((req, res, next) => {
-    const err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-  });
-
-  app.use((err, req, res) => {
-    res.status(err.status || 500);
-
-    // do not leak stack traces to user unless env is development
-    res.render('error', {
-      message: err.message,
-      error: (app.get('env') === 'development') ? err : {},
-    });
-  });
+  await initDataAccess(app);
+  initRoutes(app);
 
   return app;
 };
