@@ -19,6 +19,6 @@
     "dialect": "postgres",
     "logging": false,
     "force": true,
-    "timezone": "+02:00"
+    "timezone": "Europe/Helsinki"
   }
 }
