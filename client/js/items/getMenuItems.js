@@ -14,6 +14,11 @@ const getMenuItems = () => [
     url: '/albums',
     title: 'Albums',
   },
+  {
+    id: 4,
+    url: '/authentication',
+    title: 'Sign up',
+  },
 ];
 
 export default getMenuItems;

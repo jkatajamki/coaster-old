@@ -1,0 +1,25 @@
+@import 'variables';
+
+.form-control:focus {
+  border-color: $orange;
+  box-shadow: 0 0 0 0.2rem $orange-translucent;
+}
+
+form {
+  label {
+    margin-bottom: 0.25em;
+  }
+
+  .hint {
+    margin-left: 0.5em;
+    font-size: 16px;
+  }
+
+  .input-valid-icon {
+    color: $primary;
+  }
+
+  .input-error-icon {
+    color: $orange-darker;
+  }
+}

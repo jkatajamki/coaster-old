@@ -17,6 +17,11 @@ body {
   border-color: $primary;
 }
 
+.btn-primary.disabled {
+  background-color: $primary-background;
+  border-color: $primary;
+}
+
 .btn-primary:hover {
   background-color: $primary-darker;
   border-color: $primary;

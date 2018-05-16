@@ -1,0 +1,14 @@
+@import '../variables';
+
+.authentication {
+  color: $light-background;
+
+  h2 {
+    color: $light-background;
+    margin-bottom: 0.75em;
+  }
+
+  .main-authentication {
+    padding: 2em;
+  }
+}

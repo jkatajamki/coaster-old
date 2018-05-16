@@ -5,6 +5,7 @@ import Navigation from './navigation/Navigation';
 import Home from '../components/home/Home';
 import About from "../components/about/About";
 import FilteredAlbumList from './filtered-album-list/FilteredAlbumList';
+import Authentication from './authentication/Authentication';
 
 const Root = ({ history }) => {
   return (
@@ -14,6 +15,7 @@ const Root = ({ history }) => {
         <Route exact path="/" component={Home} />
         <Route path="/albums" component={FilteredAlbumList} />
         <Route path="/about" component={About} />
+        <Route path="/authentication" component={Authentication} />
       </main>
     </ConnectedRouter>
   );

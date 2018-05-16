@@ -6,5 +6,10 @@ $body-color: #000;
 $primary: #00adff;
 $primary-darker: darken($primary, 7%);
 $secondary: #eee;
+
 $orange: #ffb616;
 $orange-darker: darken($orange, 10%);
+$orange-translucent: rgba(255, 182, 22, 0.25);
+
+$yellow: #ffde3e;
+$yellow-translucent: rgba(255, 222, 62, 0.25);
