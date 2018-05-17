@@ -1,29 +1,19 @@
 import express from 'express';
-
-const albumRoute = require('./album-route');
+import apiRoutes from './api-routes';
+import {enableCors, four04, handleError} from './route-helpers';
 
 const initRoutes = (app) => {
+  const env = app.get('env');
   const router = express.Router();
 
-  albumRoute.default(app, router);
+  app.use((req, res, next) => enableCors(req, res, next));
 
   app.use('/', router);
+  app.use('/api/', apiRoutes(app));
 
-  app.use((req, res, next) => {
-    const err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-  });
+  app.use((req, res, next) => four04(req, res, next));
 
-  app.use((err, req, res) => {
-    res.status(err.status || 500);
-
-    // do not leak stack traces to user unless env is development
-    res.render('error', {
-      message: err.message,
-      error: (app.get('env') === 'development') ? err : {},
-    });
-  });
+  app.use((err, req, res) => handleError(err, req, res, env));
 };
 
 export default initRoutes;

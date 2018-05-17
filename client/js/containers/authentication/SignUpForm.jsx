@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import bindState from '../../utilities/bindState';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faTimesCircle } from '@fortawesome/fontawesome-free-solid';
-import { Button } from 'reactstrap';
 import LabeledInput from '../../components/form-components/LabeledInput';
 import {
   validateEmail,
@@ -23,24 +22,28 @@ const getResetFormState = () => ({
   emailValid: true,
 });
 
-const validateForm = ({ username, email, password, passwordAgain }) => ({
-  isUsernameValid: validateUsername(username),
-  isEmailValid: validateEmail(email),
-  isPasswordValid: validatePassword(password),
-  isPasswordAgainValid: validatePasswordAgain(password, passwordAgain)
-});
-
-const handleSubmit = (event) => {
-  console.log('event', event);
-};
-
 class SignUpForm extends Component {
-  state = getResetFormState();
-
   bind = bindState(this);
 
+  state = getResetFormState();
+
+  validateForm = ({ username, email, password, passwordAgain }) => ({
+    isUsernameValid: validateUsername(username),
+    isEmailValid: validateEmail(email),
+    isPasswordValid: validatePassword(password),
+    isPasswordAgainValid: validatePasswordAgain(password, passwordAgain)
+  });
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    const { username, email, password } = this.state;
+
+    this.props.signUpRequest(email, username, password)
+  };
+
   render() {
-    const { bind, handleSubmit } = this;
+    const { bind, handleSubmit, validateForm } = this;
     const { username, email, password, passwordAgain, validatingEmail, emailValid } = this.state;
 
     const validIcon = <FontAwesomeIcon className="input-valid-icon" icon={faCheckSquare} />;
@@ -63,7 +66,7 @@ class SignUpForm extends Component {
     );
 
     return (
-      <form className="sign-up-form" method="post" onSubmit={handleSubmit}>
+      <form className="sign-up-form" onSubmit={handleSubmit}>
         <h2>Sign up for Coaster.</h2>
         <LabeledInput
           id="signupUsername"
@@ -103,9 +106,13 @@ class SignUpForm extends Component {
         />
 
         <div className="buttons-area">
-          <Button color="primary" className="my-2" disabled={signupButtonDisabled}>
-            Sign up for Coaster.
-          </Button>
+          <input
+            type="submit"
+            color="primary"
+            className="btn btn-primary my-2"
+            value="Sign up for Coaster."
+            disabled={signupButtonDisabled}
+          />
         </div>
       </form>
     );
