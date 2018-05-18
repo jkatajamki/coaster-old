@@ -1,3 +1,9 @@
+/**
+ * @param req
+ * @param res
+ * @param next
+ * @param env
+ */
 const enableCors = (req, res, next, env) => {
   if (env.toLowerCase().includes('dev')) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -6,12 +12,23 @@ const enableCors = (req, res, next, env) => {
   next();
 };
 
+/**
+ * @param req
+ * @param res
+ * @param next
+ */
 const four04 = (req, res, next) => {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
 };
 
+/**
+ * @param err
+ * @param req
+ * @param res
+ * @param env
+ */
 const handleError = (err, req, res, env) => {
   res.status(err.status || 500);
 

@@ -6,7 +6,7 @@ const initRoutes = (app) => {
   const env = app.get('env');
   const router = express.Router();
 
-  app.use((req, res, next) => enableCors(req, res, next));
+  app.use((req, res, next) => enableCors(req, res, next, env));
 
   app.use('/', router);
   app.use('/api/', apiRoutes(app));
