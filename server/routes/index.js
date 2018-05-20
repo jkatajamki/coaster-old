@@ -9,7 +9,7 @@ const initRoutes = (app) => {
   app.use((req, res, next) => enableCors(req, res, next, env));
 
   app.use('/', router);
-  app.use('/api/', apiRoutes(app));
+  app.use('/api/', apiRoutes());
 
   app.use((req, res, next) => four04(req, res, next));
   app.use((err, req, res) => handleError(err, req, res, env));

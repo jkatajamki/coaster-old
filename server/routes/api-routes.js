@@ -1,10 +1,10 @@
 import express from 'express';
 import authController from '../controllers/auth-controller';
 
-const apiRoutes = (app) => {
+const apiRoutes = () => {
   const router = express.Router();
 
-  router.use('/auth', authController(app));
+  router.use('/auth', authController());
 
   return router;
 };
