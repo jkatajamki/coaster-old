@@ -12,6 +12,16 @@ body {
   background-color: $primary-background;
 }
 
+h2 {
+  color: $light-background;
+  margin-bottom: 0.75em;
+}
+
+.content-section {
+  margin-top: 2em;
+  padding: 2em;
+}
+
 .btn-primary {
   background-color: $primary;
   border-color: $primary;
