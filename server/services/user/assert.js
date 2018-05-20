@@ -6,11 +6,12 @@ const assertUserDoesNotExist = async (username, email) => {
   const userByUsername = await userService.findUserByUsername(username);
   const userByEmail = await userService.findUserByEmail(email);
 
-  if (userByUsername || userByEmail) {
-    throw new UserAlreadyExistsError();
+  if (userByUsername) {
+    throw new UserAlreadyExistsError('Unfortunately, this username is already taken. Please try a different one.');
   }
-
-  return true;
+  if (userByEmail) {
+    throw new UserAlreadyExistsError('This email is already taken. Do you already have an account?');
+  }
 };
 
 export { assertUserDoesNotExist };
