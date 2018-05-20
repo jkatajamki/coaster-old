@@ -1,6 +1,6 @@
 import express from 'express';
 import apiRoutes from './api-routes';
-import {enableCors, four04, handleError} from './route-helpers';
+import { enableCors, four04, handleError } from './route-helpers';
 
 const initRoutes = (app) => {
   const env = app.get('env');

@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "coasterapp",
-    "password": "<password>",
+    "password": "REPLACE THIS IN YOUR ENVIRONMENT-SPECIFIC CONFIG",
     "database": "coaster",
     "host": "127.0.0.1",
     "port": 5432,
@@ -12,7 +12,7 @@
   },
   "production": {
     "username": "coasterapp",
-    "password": "<password>",
+    "password": "REPLACE THIS IN YOUR ENVIRONMENT-SPECIFIC CONFIG",
     "database": "coaster",
     "host": "127.0.0.1",
     "port": 5432,

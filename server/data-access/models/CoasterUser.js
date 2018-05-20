@@ -4,7 +4,6 @@ export default (sequelize, DataTypes) =>
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     salt: DataTypes.STRING,
-    algorithm: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   });

@@ -1,4 +1,8 @@
 import initDataAccess from '../../data-access/init-data-access';
+import { assertSignUpIsValid } from './assert';
+import { createPassword } from './helpers';
+import moment from 'moment';
+import AppError from '../../util/errors/app-error';
 
 export default class UserService {
   db;
@@ -19,34 +23,47 @@ export default class UserService {
   }
 
   async findUserByUsername(username) {
-    try {
-      const result = await this.coasterUser.findOne({
-        where: {
-          username,
+    const result = await this.coasterUser.findOne({
+      where: {
+        username: {
+          $iLike: username.toLowerCase(),
         },
-      });
+      },
+    });
 
-      return result ? result.dataValues : null;
-    } catch (e) {
-      // todo: Error handling
-      console.error('Error in findUserByUsername:', e);
-      throw e;
-    }
+    return result ? result.dataValues : null;
   }
 
   async findUserByEmail(email) {
-    try {
-      const result = await this.coasterUser.findOne({
-        where: {
-          email,
-        },
-      });
+    const result = await this.coasterUser.findOne({
+      where: {
+        email,
+      },
+    });
 
-      return result ? result.dataValues : null;
-    } catch (e) {
-      // todo: Error handling
-      console.error('Error in findEmailByUsername:', e);
-      throw e;
+    return result ? result.dataValues : null;
+  }
+
+  async signUp(username, email, password) {
+    if (!await assertSignUpIsValid(username, email, password)) {
+      return null;
     }
+
+    const now = moment();
+    const { hash, salt } = await createPassword(password);
+    const saved = await this.coasterUser.create({
+      username,
+      createdAt: now,
+      email,
+      password: hash,
+      salt,
+      updatedAt: now,
+    });
+
+    if (!(saved && saved.dataValues)) {
+      throw new AppError('Could not sign up new user', 500);
+    }
+
+    return saved.dataValues;
   }
 }

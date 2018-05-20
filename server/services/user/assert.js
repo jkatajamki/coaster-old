@@ -1,5 +1,7 @@
 import UserService from './user-service';
 import UserAlreadyExistsError from '../../util/errors/auth/user-already-exists';
+import {validateEmail, validatePassword, validateUsername} from '../../../common/utils/validation/validation';
+import UserValidationError from '../../util/errors/auth/user-validation-error';
 
 const assertUserDoesNotExist = async (username, email) => {
   const userService = await UserService.build();
@@ -14,4 +16,23 @@ const assertUserDoesNotExist = async (username, email) => {
   }
 };
 
-export { assertUserDoesNotExist };
+const assertSignUpIsValid = (username, email, password) => {
+  if (!validateUsername(username)) {
+    throw new UserValidationError('Username is not valid.');
+  }
+
+  if (!validateEmail(email)) {
+    throw new UserValidationError('Email is not valid.');
+  }
+
+  if (!validatePassword(password)) {
+    throw new UserValidationError('Password is not valid.');
+  }
+
+  return true;
+};
+
+export {
+  assertUserDoesNotExist,
+  assertSignUpIsValid,
+};
