@@ -1,5 +1,5 @@
 const up = (queryInterface, Sequelize) =>
-  queryInterface.createTable('CoasterUser', {
+  queryInterface.createTable('coasterusers', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -17,6 +17,6 @@ const up = (queryInterface, Sequelize) =>
   });
 
 const down = queryInterface =>
-  queryInterface.dropTable('CoasterUser');
+  queryInterface.dropTable('coasterusers');
 
 module.exports = { up, down };
