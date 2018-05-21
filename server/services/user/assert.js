@@ -1,6 +1,7 @@
 import UserAlreadyExistsError from '../../util/errors/auth/user-already-exists';
 import { validateEmail, validatePassword, validateUsername } from '../../../common/utils/validation/validation';
 import UserValidationError from '../../util/errors/auth/user-validation-error';
+import { comparePassword } from './helpers';
 
 const assertUserDoesNotExist = async (userService, username, email) => {
   const userByUsername = await userService.findUserByUsername(username);
@@ -30,7 +31,16 @@ const assertSignUpIsValid = (username, email, password) => {
   return true;
 };
 
+const assertSignInIsValid = async (password, user) => {
+  if (!(user && await comparePassword(password, user))) {
+    throw new UserValidationError('Invalid username or password.', 401);
+  }
+
+  return true;
+};
+
 export {
   assertUserDoesNotExist,
   assertSignUpIsValid,
+  assertSignInIsValid,
 };

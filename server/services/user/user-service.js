@@ -28,9 +28,10 @@ export default class UserService {
     return result ? result.dataValues : null;
   }
 
-  async findUserByUsername(username) {
+  async findUserByUsername(username, comparePwd = false) {
+    const attributes = [...this.commonAttributes, ...comparePwd ? ['password'] : []];
     const result = await this.coasterUser.findOne({
-      attributes: this.commonAttributes,
+      attributes,
       where: {
         username: {
           $iLike: username.toLowerCase(),

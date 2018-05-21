@@ -1,6 +1,6 @@
 import express from 'express';
-import { assertUserDoesNotExist } from '../services/user/assert';
-import { createJWT, getUserObject } from '../services/user/helpers';
+import { assertSignInIsValid, assertUserDoesNotExist } from '../services/user/assert';
+import { getAuthResponseBody } from '../services/user/helpers';
 
 const authController = (app) => {
   const router = express.Router();
@@ -19,13 +19,25 @@ const authController = (app) => {
     }
 
     const signedUp = await userService.signUp(username, email, password);
-    const token = createJWT(signedUp.id);
-    const userObject = getUserObject(signedUp);
 
-    const responseBody = {
-      token,
-      userObject,
-    };
+    res.send(getAuthResponseBody(signedUp));
+  });
+
+  router.post('/signIn', async (req, res) => {
+    const { username, password } = req.body;
+
+    const user = await userService.findUserByUsername(username, true);
+
+    try {
+      await assertSignInIsValid(password, user);
+    } catch (error) {
+      res.status(401).send({
+        error,
+      });
+      return;
+    }
+
+    const responseBody = getAuthResponseBody(user);
     res.send(responseBody);
   });
 

@@ -40,6 +40,17 @@ const getUserObject = signedUp => ({
   email: signedUp.email,
 });
 
+const getAuthResponseBody = (user) => {
+  const token = createJWT(user.id);
+  const userObject = getUserObject(user);
+
+  return {
+    token,
+    userObject,
+  };
+};
+
+const comparePassword = (password, user) => bcrypt.compare(password, user.password);
 
 export {
   createPassword,
@@ -47,4 +58,6 @@ export {
   getUserIdFromToken,
   getUserObject,
   getTokenFromRequest,
+  getAuthResponseBody,
+  comparePassword,
 };
