@@ -10,6 +10,8 @@ const createPassword = async (password) => {
   return { hash, salt };
 };
 
+const getTokenFromRequest = req => req.headers.authorization;
+
 const createJWT = (id) => {
   const { jwtConfig } = config;
   const exp = +moment().add(jwtConfig.ttl, 'seconds').format('X');
@@ -38,9 +40,11 @@ const getUserObject = signedUp => ({
   email: signedUp.email,
 });
 
+
 export {
   createPassword,
   createJWT,
   getUserIdFromToken,
   getUserObject,
+  getTokenFromRequest,
 };

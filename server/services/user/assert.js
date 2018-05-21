@@ -1,10 +1,8 @@
-import UserService from './user-service';
 import UserAlreadyExistsError from '../../util/errors/auth/user-already-exists';
-import {validateEmail, validatePassword, validateUsername} from '../../../common/utils/validation/validation';
+import { validateEmail, validatePassword, validateUsername } from '../../../common/utils/validation/validation';
 import UserValidationError from '../../util/errors/auth/user-validation-error';
 
-const assertUserDoesNotExist = async (username, email) => {
-  const userService = await UserService.build();
+const assertUserDoesNotExist = async (userService, username, email) => {
   const userByUsername = await userService.findUserByUsername(username);
   const userByEmail = await userService.findUserByEmail(email);
 

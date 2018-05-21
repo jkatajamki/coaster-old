@@ -1,29 +1,36 @@
-import initDataAccess from '../../data-access/init-data-access';
+import moment from 'moment';
 import { assertSignUpIsValid } from './assert';
 import { createPassword } from './helpers';
-import moment from 'moment';
 import AppError from '../../util/errors/app-error';
 
 export default class UserService {
-  db;
+  models;
   coasterUser;
+  commonAttributes = ['id', 'username', 'email', 'createdAt', 'updatedAt'];
 
-  constructor(db) {
-    if (typeof db === 'undefined') {
-      throw new Error('Cannot be called directly');
+  constructor(models) {
+    if (typeof models === 'undefined') {
+      throw new Error('Cannot initialise UserService');
     }
 
-    this.db = db;
-    this.coasterUser = db.sequelize.models.coasterusers;
+    this.models = models;
+    this.coasterUser = models.coasterusers;
   }
 
-  static async build() {
-    const db = await initDataAccess();
-    return new UserService(db);
+  async findUserById(id) {
+    const result = await this.coasterUser.findOne({
+      attributes: this.commonAttributes,
+      where: {
+        id,
+      },
+    });
+
+    return result ? result.dataValues : null;
   }
 
   async findUserByUsername(username) {
     const result = await this.coasterUser.findOne({
+      attributes: this.commonAttributes,
       where: {
         username: {
           $iLike: username.toLowerCase(),
@@ -36,6 +43,7 @@ export default class UserService {
 
   async findUserByEmail(email) {
     const result = await this.coasterUser.findOne({
+      attributes: this.commonAttributes,
       where: {
         email,
       },

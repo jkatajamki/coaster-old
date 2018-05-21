@@ -1,26 +1,22 @@
 import express from 'express';
 import { assertUserDoesNotExist } from '../services/user/assert';
-import UserService from '../services/user/user-service';
 import { createJWT, getUserObject } from '../services/user/helpers';
-import authenticationMiddleware from '../routes/middleware/authentication';
 
-const authController = () => {
+const authController = (app) => {
   const router = express.Router();
+  const { userService } = app.services;
 
-  router.post('/signUp', authenticationMiddleware, async (req, res) => {
+  router.post('/signUp', async (req, res) => {
     const { username, email, password } = req.body;
 
     try {
-      await assertUserDoesNotExist(username, email);
+      await assertUserDoesNotExist(userService, username, email);
     } catch (error) {
       res.status(error.status).send({
         error,
       });
       return;
     }
-
-    // todo: refactor userService to authController function scope
-    const userService = await UserService.build();
 
     const signedUp = await userService.signUp(username, email, password);
     const token = createJWT(signedUp.id);
