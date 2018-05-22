@@ -19,8 +19,8 @@ const authController = (app) => {
     }
 
     const signedUp = await userService.signUp(username, email, password);
-
-    res.send(getAuthResponseBody(signedUp));
+    const responseBody = getAuthResponseBody(signedUp);
+    res.send(responseBody);
   });
 
   router.post('/signIn', async (req, res) => {

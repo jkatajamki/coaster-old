@@ -10,7 +10,12 @@ const createPassword = async (password) => {
   return { hash, salt };
 };
 
-const getTokenFromRequest = req => req.headers.authorization;
+const getTokenFromRequest = (req) => {
+  const authHeader = req.headers.authorization;
+  return authHeader
+    ? authHeader.substring(authHeader.indexOf(' ') + 1)
+    : null;
+};
 
 const createJWT = (id) => {
   const { jwtConfig } = config;

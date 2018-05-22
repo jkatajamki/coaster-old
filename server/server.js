@@ -2,10 +2,10 @@ import express from 'express';
 import path from 'path';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
-import routes from './routes/';
-import models from './data-access/models';
+import initRoutes from './routes/';
+import initModels from './data-access/models';
 import initSessionStore from './data-access/init-session-store';
-import authenticationMiddleware from './routes/middleware/authentication';
+import initAuthMiddleware from './routes/middleware/authentication';
 import jwtConfig from './config/jwt.config.json';
 import initServices from './services/init-services';
 
@@ -21,12 +21,12 @@ const boostrapApp = async () => {
 
   Object.assign(app, { jwtConfig });
 
-  await models(app);
+  await initModels(app);
   const { db } = app;
   initSessionStore(app, db.sequelize);
   initServices(app);
-  await authenticationMiddleware(app);
-  routes(app);
+  await initAuthMiddleware(app);
+  initRoutes(app);
 
   return app;
 };

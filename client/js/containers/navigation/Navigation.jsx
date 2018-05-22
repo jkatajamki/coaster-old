@@ -1,11 +1,12 @@
 import React from 'react';
 import getMenuItems from '../../items/getMenuItems';
-import bindState from '../../utilities/bindState';
 import { withRouter } from 'react-router-dom';
 import { Button, Collapse } from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/fontawesome-free-solid/';
 import classNames from 'classnames/bind';
+import stateToProps from '../../utilities/stateToProps';
+import { connect } from 'react-redux';
 
 const getResetNavState = () => ({
   expanded: false,
@@ -13,8 +14,6 @@ const getResetNavState = () => ({
 
 class Navigation extends React.Component {
   state = getResetNavState();
-
-  bind = bindState(this);
 
   handleNavToggle = () => {
     this.setState({
@@ -31,8 +30,13 @@ class Navigation extends React.Component {
     const {
       props, handleNavToggle, state, getCollapseNavClasses
     } = this;
-    const menuItems = getMenuItems();
-    const routeTitle = menuItems.find(item => item.url === props.location.pathname).title || '';
+
+    const { isAuthenticated, currentUser } = this.props.authentication;
+    const username = currentUser.username;
+    const menuItems = getMenuItems().filter(item => item.displayCondition ? item.displayCondition(isAuthenticated) : true);
+
+    const currentRouteMenuItem = menuItems.find(item => item.url === props.location.pathname);
+    const routeTitle = currentRouteMenuItem ? currentRouteMenuItem.title : '';
 
     return(
       <header>
@@ -63,4 +67,4 @@ class Navigation extends React.Component {
   };
 }
 
-export default withRouter(Navigation);
+export default withRouter(connect(stateToProps('authentication'))(Navigation));

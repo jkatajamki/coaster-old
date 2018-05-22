@@ -17,7 +17,14 @@ const getMenuItems = () => [
   {
     id: 4,
     url: '/authentication',
-    title: 'Sign up',
+    title: 'Sign in',
+    displayCondition: isAuthenticated => !isAuthenticated,
+  },
+  {
+    id: 5,
+    url: '/signOut',
+    title: 'Sign out',
+    displayCondition: isAuthenticated => isAuthenticated,
   },
 ];
 
