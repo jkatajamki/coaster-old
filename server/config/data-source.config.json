@@ -8,7 +8,8 @@
     "dialect": "postgres",
     "logging": false,
     "force": true,
-    "timezone": "Europe/Helsinki"
+    "timezone": "Europe/Helsinki",
+    "timestamps": false
   },
   "production": {
     "username": "coasterapp",

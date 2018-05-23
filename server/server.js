@@ -3,7 +3,11 @@ import path from 'path';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import initRoutes from './routes/';
-import initDataAccess from './data-access/init-data-access';
+import initModels from './data-access/models';
+import initSessionStore from './data-access/init-session-store';
+import initAuthMiddleware from './routes/middleware/authentication';
+import jwtConfig from './config/jwt.config.json';
+import initServices from './services/init-services';
 
 const boostrapApp = async () => {
   const app = express();
@@ -15,7 +19,13 @@ const boostrapApp = async () => {
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, 'public')));
 
-  await initDataAccess(app);
+  Object.assign(app, { jwtConfig });
+
+  await initModels(app);
+  const { db } = app;
+  initSessionStore(app, db.sequelize);
+  initServices(app);
+  await initAuthMiddleware(app);
   initRoutes(app);
 
   return app;

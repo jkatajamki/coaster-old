@@ -9,7 +9,7 @@ import {
   validateUsername,
   validatePassword,
   validatePasswordAgain,
-} from '../../utilities/validation/validation';
+} from '../../../../common/utils/validation/validation';
 import { signUpRequest } from '../../actions/AuthenticationActions';
 import stateToProps from '../../utilities/stateToProps';
 

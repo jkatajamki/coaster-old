@@ -1,0 +1,7 @@
+{
+  "jwtConfig": {
+    "key": "REPLACE THIS IN YOUR ENVIRONMENT-SPECIFIC CONFIG",
+    "algorithm": "HS256",
+    "ttl": 21000
+  }
+}

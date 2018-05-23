@@ -28,9 +28,9 @@ const getHeaders = (token) => {
 
 const getApiUrl = () => (__dev ? `${API_URL}:${API_PORT}/api/` : `${API_URL}/api/`);
 
-const apiCall = async (method, path, body, token) => {
+const apiCall = async (method, path, token = null, body = {}) => {
   const headers = getHeaders(token);
-  const options = getFetchOptions(headers, method, body);
+  const options = getFetchOptions(headers, method, method === 'POST' ? body : null);
   const url = `${getApiUrl()}${path}`;
 
   try {

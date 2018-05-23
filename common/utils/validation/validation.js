@@ -1,6 +1,6 @@
 const quickAndDirtyEmailRegex = /^[^@]+@[^.]{2,}\..{2,}$/;
 
-const quickUsernameRegex = /^[a-z0-9_-]{3,15}$/;
+const quickUsernameRegex = /^[a-zA-Z0-9_-]{3,20}$/;
 
 const validateEmail = email => !!email.match(quickAndDirtyEmailRegex);
 
