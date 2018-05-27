@@ -17,6 +17,14 @@ h2 {
   margin-bottom: 0.75em;
 }
 
+a {
+  color: $orange;
+}
+
+a:hover {
+  color: $orange-darker;
+}
+
 .content-section {
   margin-top: 2em;
   padding: 2em;

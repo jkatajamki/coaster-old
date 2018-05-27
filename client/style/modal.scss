@@ -1,0 +1,19 @@
+@import './variables';
+
+.modal-content, .modal-header, .modal-footer {
+  background: $primary-background;
+}
+
+.modal-header {
+  border-bottom: 1px solid $primary;
+  color: $orange;
+}
+
+.modal-content {
+  color: $light-background;
+}
+
+.modal-footer {
+  border-top: 1px solid $primary;
+  color: $orange;
+}
