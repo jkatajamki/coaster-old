@@ -101,7 +101,7 @@ class SignUpForm extends Component {
           {...bind('passwordAgain')}
         />
 
-        <div className="buttons-area">
+        <div className="buttons-area text-right">
           <input
             type="submit"
             color="primary"

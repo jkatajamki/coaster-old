@@ -64,7 +64,7 @@ class SignInForm extends Component {
             id="signInButton"
             type="submit"
             color="primary"
-            className="btn btn-primary my-2 px-4"
+            className="btn btn-primary my-2 px-5"
             value="Sign in."
             disabled={signInButtonDisabled}
           />

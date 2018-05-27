@@ -1,11 +1,8 @@
 import { userSignIn, userSignUp } from '../utilities/authentication/authentication';
 
-const toggleSignInModal = () => dispatch => {
-  console.log('toggle');
-  dispatch({
-    type: 'TOGGLE_SIGN_IN_MODAL',
-  });
-};
+const toggleSignInModal = () => dispatch => dispatch({
+  type: 'TOGGLE_SIGN_IN_MODAL',
+});
 
 const signUpSuccess = (signUpResponse) => {
   localStorage.setItem('token', signUpResponse.token);
