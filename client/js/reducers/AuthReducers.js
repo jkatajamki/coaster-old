@@ -3,6 +3,9 @@ import AuthState from '../records/AuthState';
 import UserRecord from '../records/UserRecord';
 
 export default createReducer(new AuthState(), {
+  TOGGLE_SIGN_IN_MODAL: state => state
+    .set('displaySignInModal', !state.displaySignInModal),
+
   SIGN_UP_REQUEST: state => state
     .set('isAuthenticating', true),
 

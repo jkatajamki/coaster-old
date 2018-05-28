@@ -9,14 +9,14 @@ import FilteredAlbumList from './filtered-album-list/FilteredAlbumList';
 import Authentication from './authentication/Authentication';
 import ErrorBoundary from './ErrorBoundary';
 import SignOut from './authentication/SignOut';
-import { setConfig } from 'react-hot-loader'
-setConfig({ logLevel: 'debug' })
+import SignInModal from './authentication/SignInModal';
 
 const Root = ({ history }) => (
   <ConnectedRouter history={history} >
     <main>
       <Navigation />
       <ErrorBoundary>
+        <SignInModal />
         <Route exact path="/" component={Home} />
         <Route path="/albums" component={FilteredAlbumList} />
         <Route path="/about" component={About} />

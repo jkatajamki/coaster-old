@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import bindState from '../../utilities/bindState';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faTimesCircle } from '@fortawesome/fontawesome-free-solid';
+import { validIcon, errorIcon } from '../../components/form-components/FormIcons'
 import LabeledInput from '../../components/form-components/LabeledInput';
 import {
   validateEmail,
@@ -39,15 +38,12 @@ class SignUpForm extends Component {
 
     const { username, email, password } = this.state;
 
-    this.props.signUpRequest(email, username, password)
+    this.props.signUpRequest(email, username, password);
   };
 
   render() {
     const { bind, handleSubmit, validateForm } = this;
     const { username, email, password, passwordAgain, validatingEmail, emailValid } = this.state;
-
-    const validIcon = <FontAwesomeIcon className="input-valid-icon" icon={faCheckSquare} />;
-    const errorIcon = <FontAwesomeIcon className="input-error-icon" icon={faTimesCircle} />;
 
     const { isUsernameValid, isEmailValid, isPasswordValid, isPasswordAgainValid } = validateForm({
       username, email, password, passwordAgain
@@ -105,7 +101,7 @@ class SignUpForm extends Component {
           {...bind('passwordAgain')}
         />
 
-        <div className="buttons-area">
+        <div className="buttons-area text-right">
           <input
             type="submit"
             color="primary"

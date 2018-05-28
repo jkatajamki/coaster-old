@@ -1,5 +1,9 @@
 import { userSignIn, userSignUp } from '../utilities/authentication/authentication';
 
+const toggleSignInModal = () => dispatch => dispatch({
+  type: 'TOGGLE_SIGN_IN_MODAL',
+});
+
 const signUpSuccess = (signUpResponse) => {
   localStorage.setItem('token', signUpResponse.token);
 
@@ -67,6 +71,7 @@ const signOut = () => {
 };
 
 export {
+  toggleSignInModal,
   signUpRequest,
   signUpSuccess,
   signUpFailure,

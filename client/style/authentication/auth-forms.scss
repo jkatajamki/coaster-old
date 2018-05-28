@@ -1,8 +1,8 @@
 @import '../variables';
 
-.sign-up-form {
+.sign-up-form, .sign-in-form {
   label {
-    color: $orange-darker;
+    color: $orange;
     font-weight: 500;
   }
 }

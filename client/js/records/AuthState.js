@@ -6,6 +6,7 @@ const AuthState = new Record({
   isAuthenticating: false,
   currentUser: new UserRecord(),
   token: '',
+  displaySignInModal: false,
 });
 
 export default AuthState;
