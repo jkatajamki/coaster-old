@@ -46,7 +46,7 @@ class Navigation extends React.Component {
               <span className="navbar-brand-text">{routeTitle}</span>
             </a>
             <Button className="navbar-toggler navbar-toggle" data-toggle="collapse" onClick={handleNavToggle}>
-              <FontAwesomeIcon className="nav-toggle-icon" icon={state.expanded ? faAngleUp : faAngleDown}/>
+              <FontAwesomeIcon className="nav-toggle-icon" icon={state.expanded ? faAngleUp : faAngleDown} />
             </Button>
 
             <Collapse isOpen={state.expanded} className="navbar-collapse">

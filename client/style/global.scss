@@ -49,6 +49,16 @@ a:hover {
   outline-color: orange;
 }
 
+.btn-outline-secondary {
+  color: $orange;
+  border-color: $orange;
+}
+
+.btn-outline-secondary:focus, .btn-outline-secondary:active {
+  color: $primary-background;
+  background: $orange;
+}
+
 #main {
   min-height: 100%;
   height: auto;

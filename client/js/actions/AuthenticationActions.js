@@ -1,4 +1,5 @@
 import { userSignIn, userSignUp } from '../utilities/authentication/authentication';
+import {addAlert} from './AlertActions';
 
 const toggleSignInModal = () => dispatch => dispatch({
   type: 'TOGGLE_SIGN_IN_MODAL',
@@ -58,6 +59,7 @@ const signInRequest = (username, password) => (async (dispatch) => {
     const signInResponse = await userSignIn(username, password);
     dispatch(signInSuccess(signInResponse));
   } catch (e) {
+    dispatch(addAlert('sign-in', 'Error', e.error.message, 'alert-danger'));
     dispatch(signInFailure(e));
   }
 });

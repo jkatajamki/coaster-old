@@ -10,11 +10,13 @@ import Authentication from './authentication/Authentication';
 import ErrorBoundary from './ErrorBoundary';
 import SignOut from './authentication/SignOut';
 import SignInModal from './authentication/SignInModal';
+import Alerts from './alerts/Alerts';
 
 const Root = ({ history }) => (
   <ConnectedRouter history={history} >
     <main>
       <Navigation />
+      <Alerts />
       <ErrorBoundary>
         <SignInModal />
         <Route exact path="/" component={Home} />

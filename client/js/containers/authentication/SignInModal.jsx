@@ -20,15 +20,15 @@ class SignInModal extends Component {
         isOpen={displaySignInModal}
         toggle={toggleModal}
       >
-        <ModalHeader toggle={toggleModal}>
-          <h2>Sign in to Coaster.</h2>
+        <ModalHeader className="mb-3" toggle={toggleModal}>
+          Sign in to Coaster.
         </ModalHeader>
         <ModalBody>
-          <div className="pb-3 pt-3">
+          <div className="pb-3 pt-4">
             <SignInForm />
           </div>
         </ModalBody>
-        <ModalFooter>
+        <ModalFooter className="mt-3">
           <p>Retro deep v flexitarian skateboard ugh.</p>
         </ModalFooter>
       </Modal>

@@ -4,6 +4,7 @@ import AuthSuccess from '../../components/authentication/AuthSuccess';
 import stateToProps from '../../utilities/stateToProps';
 import { connect } from 'react-redux';
 import { toggleSignInModal } from '../../actions/AuthenticationActions';
+import SignInButton from '../../components/authentication/SignInButton';
 
 class Authentication extends Component {
 
@@ -18,9 +19,10 @@ class Authentication extends Component {
 
           <div className="row mt-4 justify-content-md-center">
             <div className="col-lg-6 text-center">
-              <span className="align-middle">
-                Already have an account? <a href="#" onClick={toggleSignInModal}>Sign in.</a>
-              </span>
+              { !isAuthenticated
+                ? (<SignInButton toggleSignInModal={toggleSignInModal} />)
+                : (<h2>Welcome to Coaster.</h2>)
+              }
             </div>
           </div>
 

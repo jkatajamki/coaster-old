@@ -25,6 +25,7 @@ export default createReducer(new AuthState(), {
     .set('isAuthenticating', false),
 
   SIGN_IN_SUCCESS: (state, { token, userObject }) => state
+    .set('displaySignInModal', false)
     .set('isAuthenticating', false)
     .set('isAuthenticated', true)
     .set('currentUser', new UserRecord(userObject))
