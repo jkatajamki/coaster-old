@@ -11,17 +11,12 @@ const getMenuItems = () => [
   },
   {
     id: 3,
-    url: '/albums',
-    title: 'Albums',
-  },
-  {
-    id: 4,
     url: '/authentication',
     title: 'Sign in',
     displayCondition: isAuthenticated => !isAuthenticated,
   },
   {
-    id: 5,
+    id: 4,
     url: '/signOut',
     title: 'Sign out',
     displayCondition: isAuthenticated => isAuthenticated,

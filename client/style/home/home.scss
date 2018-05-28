@@ -1,0 +1,22 @@
+@import '../variables';
+
+#homePage {
+  .jumbotron {
+    background: linear-gradient($orange-darker-translucent, $orange-darker-translucent), url('../img/idbackground.jpg');
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    h1 {
+      color: $light-background;
+    }
+
+    p {
+      color: $light-background;
+    }
+
+    .container.text-center {
+      background: rgba(100, 60, 0, 0.5);
+    }
+  }
+}
