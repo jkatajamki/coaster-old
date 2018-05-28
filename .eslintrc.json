@@ -35,5 +35,13 @@
   },
   "globals": {
     "__dev": true
+  },
+  "plugins": [
+    "import",
+    "jest"
+  ],
+  "env": {
+    "node": true,
+    "jest/globals": true
   }
 }
