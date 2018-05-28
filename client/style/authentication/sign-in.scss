@@ -1,7 +1,7 @@
 @import '../variables';
 
 .sign-in-modal {
-  h2 {
-    margin-bottom: 0;
+  .modal-header {
+    color: $light-background;
   }
 }

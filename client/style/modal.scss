@@ -2,18 +2,29 @@
 
 .modal-content, .modal-header, .modal-footer {
   background: $primary-background;
+  padding: 0.75em;
 }
 
 .modal-header {
-  border-bottom: 1px solid $primary;
   color: $orange;
+  border: 0;
 }
 
 .modal-content {
   color: $light-background;
 }
 
-.modal-footer {
+.modal-body {
+  border-bottom: 1px solid $primary;
   border-top: 1px solid $primary;
+  border-radius: 1em;
+}
+
+.modal-footer {
+  border: 0;
   color: $orange;
+}
+
+.close {
+  color: $primary;
 }

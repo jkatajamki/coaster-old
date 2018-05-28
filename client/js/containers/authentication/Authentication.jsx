@@ -19,8 +19,13 @@ class Authentication extends Component {
           <div className="row mt-4 justify-content-md-center">
             <div className="col-lg-6 text-center">
               <span className="align-middle">
-                Already have an account? <a href="#" onClick={toggleSignInModal}>Sign in.</a>
+                Already have an account?
               </span>
+              <button
+                id="openSignInModalButton"
+                className="btn btn-outline-secondary my-2 px-5 mx-3"
+                onClick={toggleSignInModal}
+              >Sign in.</button>
             </div>
           </div>
 
