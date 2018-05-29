@@ -7,6 +7,7 @@ import { faAngleDown, faAngleUp } from '@fortawesome/fontawesome-free-solid/';
 import classNames from 'classnames/bind';
 import stateToProps from '../../utilities/stateToProps';
 import { connect } from 'react-redux';
+import logoImage from '../../../img/coaster.png';
 
 const getResetNavState = () => ({
   expanded: false,
@@ -43,6 +44,7 @@ class Navigation extends React.Component {
         <div className="navbar navbar-dark bg-dark box-shadow">
           <div className="container d-flex justify-content-between">
             <a href="#" className="navbar-brand d-flex align-items-center">
+              <img id="coasterLogo" src={logoImage} alt="Coaster logo" />
               <span className="navbar-brand-text">{routeTitle}</span>
             </a>
             <Button className="navbar-toggler navbar-toggle" data-toggle="collapse" onClick={handleNavToggle}>

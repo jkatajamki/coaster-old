@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<svg width="495.99999999999994" height="512" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <g display="inline">
+  <title>Layer 1</title>
+  <rect fill="#232323" stroke-width="null" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="-1.499984" y="-1.500057" width="509.000023" height="514.500042" id="svg_5"/>
+  <path fill="#ffb616" id="svg_1" d="m248,8c-137,0 -248,111 -248,248s111,248 248,248s248,-111 248,-248s-111,-248 -248,-248zm-160,248l-32,0c0,-105.9 86.1,-192 192,-192l0,32c-88.2,0 -160,71.8 -160,160zm160,96c-53,0 -96,-43 -96,-96s43,-96 96,-96s96,43 96,96s-43,96 -96,96zm0,-128c-17.7,0 -32,14.3 -32,32s14.3,32 32,32s32,-14.3 32,-32s-14.3,-32 -32,-32z"/>
+  <path id="svg_2" d="m344.46478,255.64378l150.14692,-253.50008l-98.8836,0l-150.14691,253.50008l150.14691,253.49987l98.8836,0l-150.14692,-253.49987z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#232323"/>
+  <rect id="svg_3" height="353.250007" width="95.250006" y="72.999972" x="400.250027" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#232323"/>
+  <path id="svg_8" d="m248.00002,52.74997c-3.75,0 -135,23.25 -135.75,24c-0.75,0.75 -60,77.25 -60,78c0,0.75 -8.25,108.75001 -8.75002,108.50003c-0.50002,-0.24998 53.00002,1.74998 52.5,1.5c-0.50002,-0.24998 44.75002,-104.00003 44.25,-104.25c-0.50002,-0.24997 49.25002,-32.75003 48.75,-33c-0.50002,-0.24997 75.50002,-18.50003 75,-18.75c-0.50002,-0.24997 -2.49998,-36.50003 -3,-36.75c-0.50002,-0.24997 -3.24998,-5.00003 -3.75,-5.25c-0.50002,-0.24997 0.50002,-5.75003 0,-6" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#ffb616"/>
+  <rect id="svg_9" height="165.750005" width="86.250003" y="175.749975" x="341.000026" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#232323"/>
+  <rect id="svg_15" height="234.750007" width="72.750002" y="145.749974" x="361.250026" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#232323"/>
+  <ellipse ry="32.536698" rx="34.839296" id="svg_19" cy="255.565746" cx="247.738841" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#00adff"/>
+  <rect id="svg_20" height="480.750015" width="63" y="13.74997" x="441.500029" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#232323"/>
+ </g>
+ <g display="inline">
+  <title>Layer 2</title>
+ </g>
+</svg>
