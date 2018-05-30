@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const config = {
   entry: {
@@ -39,6 +40,8 @@ const config = {
     new webpack.DefinePlugin({
       __dev: true,
     }),
+
+    new FaviconsWebpackPlugin('./client/img/coaster.png'),
   ],
 
   devtool: 'cheap-module-eval-source-map',
