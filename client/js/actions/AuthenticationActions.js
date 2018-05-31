@@ -28,6 +28,7 @@ const signUpRequest = (email, username, password) => (async (dispatch) => {
     const signUpResponse = await userSignUp(username, email, password);
     dispatch(signUpSuccess(signUpResponse));
   } catch (e) {
+    dispatch(addAlert('sign-in', 'Error', e.error.message, 'alert-danger'));
     dispatch(signUpFailure(e));
   }
 });
