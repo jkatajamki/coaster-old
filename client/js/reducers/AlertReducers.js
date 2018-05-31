@@ -13,6 +13,7 @@ export default createReducer(new AlertState(), {
 
     if (!match) {
       const allAlerts = state.allAlerts.concat(new AlertRecord({
+        id: state.allAlerts.length + 1,
         type,
         title,
         message,
