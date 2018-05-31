@@ -33,9 +33,9 @@ class SignInModal extends Component {
         </ModalFooter>
       </Modal>
     );
-  };
+  }
 }
 
 export default connect(stateToProps('authentication'), {
-  toggleSignInModal
+  toggleSignInModal,
 })(SignInModal);

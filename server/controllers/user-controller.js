@@ -1,5 +1,4 @@
 import express from 'express';
-import AuthenticationRequiredError from '../util/errors/auth/auth-required-error';
 import { getAuthResponseBody } from '../services/user/helpers';
 
 const userController = (app) => {
@@ -7,18 +6,13 @@ const userController = (app) => {
   const { userService } = app.services;
 
   router.get('/me', async (req, res) => {
-    const { currentUser } = req;
-
-    if (!currentUser) {
-      const error = new AuthenticationRequiredError();
-      res.status(403).send({
-        error,
-      });
-      return;
+    try {
+      const currentUser = await userService.getMe(req);
+      const responseBody = getAuthResponseBody(currentUser);
+      res.send(responseBody);
+    } catch (e) {
+      res.status(e.status).send({ e });
     }
-
-    const responseBody = getAuthResponseBody(currentUser);
-    res.send(responseBody);
   });
 
   return router;

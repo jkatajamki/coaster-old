@@ -1,10 +1,10 @@
 import React from 'react';
-import { hot } from 'react-hot-loader'
+import { hot } from 'react-hot-loader';
 import { ConnectedRouter } from 'react-router-redux';
 import { Route } from 'react-router';
 import Navigation from './navigation/Navigation';
 import Home from '../components/home/Home';
-import About from "../components/about/About";
+import About from '../components/about/About';
 import Authentication from './authentication/Authentication';
 import ErrorBoundary from './ErrorBoundary';
 import SignOut from './authentication/SignOut';

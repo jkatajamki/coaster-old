@@ -3,7 +3,12 @@ import AlertRecord from '../records/AlertRecord';
 import AlertState from '../records/AlertState';
 
 export default createReducer(new AlertState(), {
-  ADD_ALERT: (state, { type, title, message, alertClass }) => {
+  ADD_ALERT: (state, {
+    type,
+    title,
+    message,
+    alertClass,
+  }) => {
     const match = state.allAlerts.find(alert => alert.message === message);
 
     if (!match) {
@@ -28,6 +33,6 @@ export default createReducer(new AlertState(), {
     .set('allAlerts', []),
 
   DISMISS_ALERT: (state, { type, alertClass }) => state
-      .set('allAlerts', state.allAlerts.filter(alert =>
-        alert.type !== type && alert.allAlerts !== alertClass)),
+    .set('allAlerts', state.allAlerts.filter(alert =>
+      alert.type !== type && alert.allAlerts !== alertClass)),
 });

@@ -5,15 +5,15 @@ import stateToProps from '../../utilities/stateToProps';
 import bindState from '../../utilities/bindState';
 import LabeledInput from '../../components/form-components/LabeledInput';
 import { validateUsername, validatePassword } from '../../../../common/utils/validation/validation';
-import { validIcon, errorIcon } from '../../components/form-components/FormIcons'
+import { validIcon, errorIcon } from '../../components/form-components/FormIcons';
 
 class SignInForm extends Component {
-  bind = bindState(this);
-
   state = {
     username: '',
     password: '',
   };
+
+  bind = bindState(this);
 
   validateForm = ({ username, password }) => ({
     isUsernameValid: validateUsername(username),
@@ -32,13 +32,13 @@ class SignInForm extends Component {
     const { bind, handleSubmit, validateForm } = this;
     const { username, password } = this.state;
     const { isUsernameValid, isPasswordValid } = validateForm({
-      username, password
+      username, password,
     });
     const usernameHint = isUsernameValid && isUsernameValid ? validIcon : errorIcon;
     const passwordHint = isPasswordValid && isPasswordValid ? validIcon : errorIcon;
     const signInButtonDisabled = !(isUsernameValid && isPasswordValid);
 
-    return(
+    return (
       <form className="sign-in-form" onSubmit={handleSubmit}>
         <LabeledInput
           id="signInUsername"

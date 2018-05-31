@@ -6,8 +6,13 @@
 }
 
 form {
-  label {
-    margin-bottom: 0.25em;
+
+
+  .input-group {
+    label {
+      width: 100%;
+      margin-bottom: 0.25em;
+    }
   }
 
   .hint {

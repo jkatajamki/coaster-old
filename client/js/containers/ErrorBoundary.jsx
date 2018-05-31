@@ -9,9 +9,8 @@ class ErrorBoundary extends Component {
     };
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch() {
     this.setState({ hasError: true });
-    console.error('componentDidCatch', error, info);
   }
 
   render() {
@@ -24,7 +23,11 @@ class ErrorBoundary extends Component {
               <div className="display-error-page main-center content-section">
                 <h2>Something unexpected happened...</h2>
 
-                <p>Some error happened, and that's why you're seeing this page. You can try again, or wait till the problem is resolved. Sorry about the inconvenience!</p>
+                <p>
+                  Some error happened, and that&#39;s why you&#39;re seeing this page.
+                  You can try again, or wait till the problem is resolved.
+                  Sorry about the inconvenience!
+                </p>
               </div>
             </div>
 

@@ -1,17 +1,18 @@
+/* eslint react/prefer-stateless-function: "warn" */
+
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import SignUpForm from './SignUpForm';
 import AuthSuccess from '../../components/authentication/AuthSuccess';
 import stateToProps from '../../utilities/stateToProps';
-import { connect } from 'react-redux';
 import { toggleSignInModal } from '../../actions/AuthenticationActions';
 import SignInButton from '../../components/authentication/SignInButton';
 
 class Authentication extends Component {
-
   render() {
-    const { authentication, toggleSignInModal } = this.props;
-    const { isAuthenticated, currentUser } = authentication;
-    const username = currentUser.username;
+    const { toggleSignInModal, authentication } = this.props;
+    const { currentUser, isAuthenticated } = authentication;
+    const { username } = currentUser;
 
     return (
       <div className="authentication">
@@ -31,7 +32,7 @@ class Authentication extends Component {
             <div className="col-lg-6">
               <div className="main-authentication main-center content-section">
                 { !isAuthenticated
-                  ? (<SignUpForm/>)
+                  ? (<SignUpForm />)
                   : (<AuthSuccess username={username} />)
                 }
               </div>
@@ -42,9 +43,9 @@ class Authentication extends Component {
         </div>
       </div>
     );
-  };
+  }
 }
 
 export default connect(stateToProps('authentication'), {
-  toggleSignInModal
+  toggleSignInModal,
 })(Authentication);

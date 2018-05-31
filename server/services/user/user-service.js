@@ -2,6 +2,7 @@ import moment from 'moment';
 import { assertSignUpIsValid } from './assert';
 import { createPassword } from './helpers';
 import AppError from '../../util/errors/app-error';
+import AuthenticationRequiredError from '../../util/errors/auth/auth-required-error';
 
 export default class UserService {
   models;
@@ -74,5 +75,15 @@ export default class UserService {
     }
 
     return saved.dataValues;
+  }
+
+  getMe(req) {
+    const { currentUser } = req;
+
+    if (!currentUser) {
+      throw new AuthenticationRequiredError();
+    }
+
+    return this.findUserById(currentUser.id);
   }
 }

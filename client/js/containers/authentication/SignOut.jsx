@@ -4,9 +4,13 @@ import stateToProps from '../../utilities/stateToProps';
 import { signOut } from '../../actions/AuthenticationActions';
 
 class SignOut extends Component {
+  componentDidMount() {
+    this.props.signOut();
+  }
+
   render() {
     const { isAuthenticated, currentUser } = this.props.authentication;
-    const username = currentUser.username;
+    const { username } = currentUser;
 
     return (
       <div className="sign-out">
@@ -28,12 +32,8 @@ class SignOut extends Component {
       </div>
     );
   }
-
-  componentDidMount() {
-    this.props.signOut();
-  }
 }
 
 export default connect(stateToProps('authentication'), {
-  signOut
+  signOut,
 })(SignOut);

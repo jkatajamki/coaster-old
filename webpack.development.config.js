@@ -24,7 +24,7 @@ const config = {
     modules: ['node_modules', path.resolve(__dirname, 'client/js')],
     alias: {
       common: path.resolve(__dirname, 'common'),
-      images: path.resolve(__dirname, 'client/img')
+      images: path.resolve(__dirname, 'client/img'),
     },
   },
 
@@ -51,7 +51,7 @@ const config = {
       { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.s[ac]ss$/, loader: ['style-loader', 'css-loader', 'sass-loader'], exclude: /node_modules/ },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
-      { test: /\.(png|svg|jpg|gif)$/, loader: 'file-loader', }
+      { test: /\.(png|svg|jpg|gif)$/, loader: 'file-loader' },
     ],
   },
 };

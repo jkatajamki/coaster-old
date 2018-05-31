@@ -21,8 +21,8 @@ class Alerts extends Component {
 
     return (
       <div id="alertsBlock" className="px-5">
-        { allAlerts.map((alert, key) =>
-          <div key={key} className="row">
+        { allAlerts.map(alert => (
+          <div key={alert.id} className="row">
             <div className="col-sm-4 offset-sm-4">
               <div className={getAlertBoxClassNames(alert.alertClass)}>
 
@@ -35,7 +35,10 @@ class Alerts extends Component {
                     title="Close"
                     onClick={handleClose}
                   >
-                    <FontAwesomeIcon className={getCloseIconClassNames(alert.alertClass)} icon={faTimes} />
+                    <FontAwesomeIcon
+                      className={getCloseIconClassNames(alert.alertClass)}
+                      icon={faTimes}
+                    />
                   </button>
                 </div>
 
@@ -46,10 +49,10 @@ class Alerts extends Component {
               </div>
             </div>
           </div>
-        )}
+        ))}
       </div>
     );
-  };
+  }
 }
 
 export default connect(stateToProps('alerts'), {

@@ -9,7 +9,9 @@ const SignInButton = ({ toggleSignInModal }) => (
       id="openSignInModalButton"
       className="btn btn-outline-secondary my-2 px-5 mx-3"
       onClick={toggleSignInModal}
-    >Sign in.</button>
+    >
+      Sign in.
+    </button>
   </div>
 );
 
