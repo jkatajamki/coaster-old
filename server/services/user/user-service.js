@@ -5,7 +5,6 @@ import AppError from '../../util/errors/app-error';
 import AuthenticationRequiredError from '../../util/errors/auth/auth-required-error';
 
 export default class UserService {
-  models;
   coasterUser;
   commonAttributes = ['id', 'username', 'email', 'createdAt', 'updatedAt'];
 
@@ -14,7 +13,6 @@ export default class UserService {
       throw new Error('Cannot initialise UserService');
     }
 
-    this.models = models;
     this.coasterUser = models.coasterusers;
   }
 

@@ -1,7 +1,7 @@
 import albumFormatEnum from '../../../common/constants/enum/album-format.enum';
 
-export default (sequelize, DataTypes) =>
-  sequelize.define('useralbums', {
+const defineUserAlbum = (sequelize, DataTypes) => {
+  const UserAlbum = sequelize.define('useralbums', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -10,4 +10,29 @@ export default (sequelize, DataTypes) =>
     userId: DataTypes.INTEGER,
     format: DataTypes.ENUM(albumFormatEnum),
     editionDescription: DataTypes.STRING,
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE,
   });
+
+  UserAlbum.associate = (db) => {
+    const { useralbums, albums, coasterusers } = db.sequelize.models;
+
+    useralbums.belongsTo(albums, {
+      onDelete: 'CASCADE',
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+
+    useralbums.belongsTo(coasterusers, {
+      onDElete: 'CASCADE',
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
+
+  return UserAlbum;
+};
+
+export default defineUserAlbum;

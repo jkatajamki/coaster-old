@@ -11,6 +11,7 @@ const up = (queryInterface, Sequelize) =>
     artistId: {
       allowNull: false,
       type: Sequelize.INTEGER,
+      onDelete: 'CASCADE',
       references: {
         model: 'artists',
         key: 'id',
@@ -35,6 +36,14 @@ const up = (queryInterface, Sequelize) =>
     type: {
       allowNull: true,
       type: Sequelize.ENUM(albumTypeEnum),
+    },
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
     },
   });
 

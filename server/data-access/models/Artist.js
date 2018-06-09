@@ -1,5 +1,5 @@
-export default (sequelize, DataTypes) =>
-  sequelize.define('artist', {
+const defineArtist = (sequelize, DataTypes) => {
+  const Artist = sequelize.define('artists', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -11,3 +11,16 @@ export default (sequelize, DataTypes) =>
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   });
+
+  Artist.associate = (db) => {
+    const { artists, albums } = db.sequelize.models;
+
+    artists.hasMany(albums, {
+      as: 'albums',
+    });
+  };
+
+  return Artist;
+}
+
+export default defineArtist;

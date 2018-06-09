@@ -1,9 +1,9 @@
 const up = (queryInterface, Sequelize) =>
   queryInterface.createTable('coasterusers', {
     id: {
+      primaryKey: true,
       allowNull: false,
       autoIncrement: true,
-      primaryKey: true,
       type: Sequelize.INTEGER,
     },
     username: {
