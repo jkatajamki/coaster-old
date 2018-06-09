@@ -7,6 +7,10 @@ const up = (queryInterface, Sequelize) =>
     },
     userId: {
       type: Sequelize.INTEGER,
+      references: {
+        model: 'coasterusers',
+        key: 'id',
+      },
     },
     expires: {
       allowNull: false,

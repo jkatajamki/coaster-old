@@ -1,13 +1,13 @@
 export default (sequelize, DataTypes) =>
-  sequelize.define('coasterusers', {
+  sequelize.define('artist', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
     },
-    username: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    salt: DataTypes.STRING,
+    artistName: DataTypes.STRING,
+    normalizedName: DataTypes.STRING,
+    genre: DataTypes.STRING,
+    country: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   });
