@@ -1,7 +1,7 @@
 import albumTypeEnum from '../../../common/constants/enum/album-type.enum';
 
 export default (sequelize, DataTypes) =>
-  sequelize.define('artist-albums', {
+  sequelize.define('albums', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,

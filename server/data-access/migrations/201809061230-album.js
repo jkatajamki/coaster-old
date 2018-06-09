@@ -1,4 +1,4 @@
-const { albumTypeEnum } = require('../../../common/constants/enum/album-type.enum');
+const albumTypeEnum = require('../../../common/constants/enum/album-type.enum');
 
 const up = (queryInterface, Sequelize) =>
   queryInterface.createTable('albums', {
@@ -32,7 +32,10 @@ const up = (queryInterface, Sequelize) =>
       allowNull: true,
       type: Sequelize.INTEGER,
     },
-    type: Sequelize.ENUM(albumTypeEnum),
+    type: {
+      allowNull: true,
+      type: Sequelize.ENUM(albumTypeEnum),
+    },
   });
 
 const down = queryInterface =>
