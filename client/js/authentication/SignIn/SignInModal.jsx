@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import stateToProps from '../../utilities/stateToProps';
-import { toggleSignInModal } from '../../actions/AuthenticationActions';
 import SignInForm from './SignInForm';
+import { toggleSignInModal } from '../AuthenticationActions';
 
 class SignInModal extends Component {
   toggleModal = () => {

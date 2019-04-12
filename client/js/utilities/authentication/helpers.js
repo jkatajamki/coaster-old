@@ -1,5 +1,5 @@
-import { signInSuccess, signOut } from '../../actions/AuthenticationActions';
 import { getUser } from './authentication';
+import { signInSuccess, signOut } from '../../authentication/AuthenticationActions';
 
 const setSignedInStatus = async (store) => {
   const token = localStorage.getItem('token');

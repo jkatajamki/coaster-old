@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { signInRequest } from '../../actions/AuthenticationActions';
 import stateToProps from '../../utilities/stateToProps';
 import bindState from '../../utilities/bindState';
 import LabeledInput from '../../components/form-components/LabeledInput';
 import { validateUsername, validatePassword } from '../../../../common/utils/validation/validation';
 import { validIcon, errorIcon } from '../../components/form-components/FormIcons';
+import { signInRequest } from '../AuthenticationActions';
 
 class SignInForm extends Component {
   state = {

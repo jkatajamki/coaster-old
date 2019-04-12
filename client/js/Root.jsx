@@ -3,12 +3,12 @@ import { hot } from 'react-hot-loader';
 import { ConnectedRouter } from 'react-router-redux';
 import { Route } from 'react-router';
 import Navigation from './navigation/Navigation';
-import Home from '../components/home/Home';
-import About from '../components/about/About';
-import Authentication from './authentication/Authentication';
+import Home from './components/home/Home';
+import About from './components/about/About';
 import ErrorBoundary from './ErrorBoundary';
 import SignOut from './authentication/SignOut';
-import SignInModal from './authentication/SignInModal';
+import Authentication from './authentication/Authentication';
+import SignInModal from './authentication/SignIn/SignInModal';
 import Alerts from './alerts/Alerts';
 
 const Root = ({ history }) => (

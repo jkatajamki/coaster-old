@@ -5,9 +5,9 @@ import { Button, Collapse } from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/fontawesome-free-solid/';
 import classNames from 'classnames/bind';
-import getMenuItems from '../../items/getMenuItems';
-import stateToProps from '../../utilities/stateToProps';
-import logoImage from '../../../img/coaster.png';
+import getMenuItems from '../items/getMenuItems';
+import stateToProps from '../utilities/stateToProps';
+import logoImage from '../../img/coaster.png';
 
 const getResetNavState = () => ({
   expanded: false,

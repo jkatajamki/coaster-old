@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/fontawesome-free-solid/';
-import stateToProps from '../../utilities/stateToProps';
-import { dismissAlert } from '../../actions/AlertActions';
+import stateToProps from '../utilities/stateToProps';
+import { dismissAlert } from './AlertActions';
 
 class Alerts extends Component {
   getAlertBoxClassNames = alertClass => `alert-box alert alert-dismissable ${alertClass}`;

@@ -1,5 +1,5 @@
 import { userSignIn, userSignUp } from '../utilities/authentication/authentication';
-import { addAlert } from './AlertActions';
+import { addAlert } from '../alerts/AlertActions';
 
 const toggleSignInModal = () => dispatch => dispatch({
   type: 'TOGGLE_SIGN_IN_MODAL',

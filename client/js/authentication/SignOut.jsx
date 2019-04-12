@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import stateToProps from '../../utilities/stateToProps';
-import { signOut } from '../../actions/AuthenticationActions';
+import stateToProps from '../utilities/stateToProps';
+import { signOut } from './AuthenticationActions';
 
 class SignOut extends Component {
   componentDidMount() {

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import bindState from '../../utilities/bindState';
-import { validIcon, errorIcon } from '../../components/form-components/FormIcons';
-import LabeledInput from '../../components/form-components/LabeledInput';
+import bindState from '../utilities/bindState';
+import { validIcon, errorIcon } from '../components/form-components/FormIcons';
+import LabeledInput from '../components/form-components/LabeledInput';
 import {
-  validateEmail,
   validateUsername,
   validatePassword,
   validatePasswordAgain,
-} from '../../../../common/utils/validation/validation';
-import { signUpRequest } from '../../actions/AuthenticationActions';
-import stateToProps from '../../utilities/stateToProps';
+  validateEmail,
+} from '../../../common/utils/validation/validation';
+import stateToProps from '../utilities/stateToProps';
+import { signUpRequest } from './AuthenticationActions';
 
 const getResetFormState = () => ({
   email: '',

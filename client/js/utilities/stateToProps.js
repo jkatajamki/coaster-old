@@ -1,5 +1,3 @@
-import pick from 'lodash/pick';
-
-const stateToProps = (...args) => state => pick(state, args);
+const stateToProps = (...args) => state => (({ ...args }) => ({ ...args }))(state);
 
 export default stateToProps;
