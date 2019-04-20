@@ -9,7 +9,7 @@ const {
   ENV,
 } = process.env;
 
-const dev = {
+const development = {
   driver: 'pg',
   database: DB_NAME,
   user: DB_USERNAME,
@@ -20,7 +20,7 @@ const dev = {
 }
 
 const dbConfig = {
-  dev,
+  development,
 }
 
 module.exports = dbConfig;

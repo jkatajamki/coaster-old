@@ -6,7 +6,6 @@ const migrationConfig = {
   ...dbConfig,
   ...{ 'sql-file': true }
 };
-console.log('migrationConfig', migrationConfig)
 
 DBMigrate.getInstance(false, {
   config: migrationConfig

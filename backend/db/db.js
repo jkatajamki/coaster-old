@@ -1,9 +1,17 @@
 import pg from 'pg';
-import { getConnectionString } from './db-connection';
 import logError from '../utils/log-error';
+import dbConfig from './db-config';
 
 const pgPool = new pg.Pool({
-  connectionString: getConnectionString(),
+  database: dbConfig.database,
+  host: dbConfig.host || 'localhost',
+  //idleTimeoutMillis: cfg.db.idleTimeoutMillis,
+  //max: cfg.db.poolSize,
+  //min: 1,
+  password: dbConfig.password,
+  port: dbConfig.port || 5432,
+  //ssl: cfg.db.ssl,
+  user: dbConfig.user
 });
 
 // todo: add proper debugging for backend
@@ -17,7 +25,6 @@ const pgPool = new pg.Pool({
 })();
 
 const dbQuery = async (queryFn, values) => {
-  console.log('getConnectionString()', getConnectionString())
   try {
     const sql = {
       text: queryFn(),
