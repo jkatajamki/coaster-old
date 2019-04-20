@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { welcomeMessage } from './welcome-message';
+import { welcomeMessage } from './utils/welcome-message';
 import { router } from './routing/routes';
 import dotenv from 'dotenv';
 

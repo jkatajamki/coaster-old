@@ -17,6 +17,7 @@ const pgPool = new pg.Pool({
 })();
 
 const dbQuery = async (queryFn, values) => {
+  console.log('getConnectionString()', getConnectionString())
   try {
     const sql = {
       text: queryFn(),
