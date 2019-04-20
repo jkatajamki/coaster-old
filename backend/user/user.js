@@ -1,6 +1,6 @@
-import { dbQuery } from '../db/db';
+import dbQuery from '../db/db';
 
-export const findUserByEmail = (email) => {
+export const findUserByEmail = async (email) => {
   const params = [email];
   const queryFn = () => `
   SELECT
@@ -12,10 +12,11 @@ export const findUserByEmail = (email) => {
   FROM coaster_users
   WHERE email = $1;
   `;
-  return dbQuery(queryFn, params);
+  const resultRows = await dbQuery(queryFn, params);
+  return resultRows.length > 0 ? resultRows[0] : null;
 };
 
-export const findUserByUsername = (username) => {
+export const findUserByUsername = async (username) => {
   const params = [username];
   const queryFn = () => `
   SELECT
@@ -27,7 +28,8 @@ export const findUserByUsername = (username) => {
   FROM coaster_users
   WHERE username = $1;
   `;
-  return dbQuery(queryFn, params);
+  const resultRows = await dbQuery(queryFn, params);
+  return resultRows.length > 0 ? resultRows[0] : null;
 };
 
 export const createNewUser = (username, createdAt, email, password, salt) => {

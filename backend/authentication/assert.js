@@ -1,5 +1,6 @@
 import { validateUsername, validateEmail, validatePassword } from '../../common/utils/validation/validation';
 import UserAlreadyExistsError from '../utils/errors/UserAlreadyExistsError';
+import UserValidationError from '../utils/errors/UserValidationError';
 
 export const makeSignUpValidityAssertions = (
   username,

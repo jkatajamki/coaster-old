@@ -1,17 +1,23 @@
 import pg from 'pg';
 import logError from '../utils/log-error';
 import dbConfig from './db-config';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const { ENV } = process.env;
+const envDbConfig = dbConfig[ENV];
 
 const pgPool = new pg.Pool({
-  database: dbConfig.database,
-  host: dbConfig.host || 'localhost',
+  database: envDbConfig.database || 'coaster',
+  host: envDbConfig.host || 'localhost',
   //idleTimeoutMillis: cfg.db.idleTimeoutMillis,
   //max: cfg.db.poolSize,
   //min: 1,
-  password: dbConfig.password,
-  port: dbConfig.port || 5432,
+  password: envDbConfig.password,
+  port: envDbConfig.port || 5432,
   //ssl: cfg.db.ssl,
-  user: dbConfig.user
+  user: envDbConfig.user
 });
 
 // todo: add proper debugging for backend
@@ -23,6 +29,16 @@ const pgPool = new pg.Pool({
     process.exit(1);
   }
 })();
+
+const toJson = (results) => {
+  try {
+    const parsedResults = JSON.parse(JSON.stringify(results));
+    return parsedResults.rows;
+  } catch (e) {
+    logError('Error: parsing results failed:', e);
+    throw e;
+  }
+};
 
 const dbQuery = async (queryFn, values) => {
   try {

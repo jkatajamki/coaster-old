@@ -26,8 +26,7 @@ export const signUp = (req, res) => {
     .then(() => {
       // complete sign up
       // send response
+      return;
     })
-    .catch((err) => {
-      handleError(err);
-    });
+    .catch((err) => handleError(err, req, res));
 }
