@@ -2,6 +2,9 @@ node_modules/
 .idea
 build/
 
+# env variables
+.env
+
 # config files with .example files representing them in versioning
 server/config/data-source.config.json
 server/config/jwt.config.json

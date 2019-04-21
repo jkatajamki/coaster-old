@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+const DBMigrate = require('db-migrate');
+const dbConfig = require('./backend/db/db-config');
+const migrationConfig = {
+  ...dbConfig,
+  ...{ 'sql-file': true }
+};
+
+DBMigrate.getInstance(false, {
+  config: migrationConfig
+}, (migrator, internal, callback, originalErr) => {
+  migrator.driver.close(err => {
+    if (originalErr || err) {
+      console.error('Running migrations failed', originalErr || err)
+      process.exit(1)
+    }
+    console.log('Run migrations successfully!')
+  });
+}).run()

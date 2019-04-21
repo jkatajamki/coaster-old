@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
-import Root from './containers/Root';
+import Root from './Root';
 import configureStore from './store/configureStore';
 import setSignedInStatus from './utilities/authentication/helpers';
 
