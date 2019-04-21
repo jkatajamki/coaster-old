@@ -5,3 +5,5 @@ export const createPassword = async (password) => {
   const hash = await bcrypt.hash(password, salt);
   return { hash, salt };
 }
+
+export const comparePassword = (password, user) => bcrypt.compare(password, user.password);
