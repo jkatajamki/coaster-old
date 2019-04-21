@@ -38,6 +38,16 @@ export const findUserByUsername = async (username) => {
   return resultRows.length > 0 ? mapUserFields(resultRows[0]) : null;
 };
 
+export const findUserById = async (userId) => {
+  const params = [userId];
+  const queryFn = () => `
+  ${selectUserQuery}
+  WHERE user_id = $1;
+  `;
+  const resultRows = await dbQuery(queryFn, params);
+  return resultRows.length > 0 ? mapUserFields(resultRows[0]) : null;
+}
+
 export const findUserBySignInWord = async (signInWord) => {
   const params = [signInWord];
   const queryFn = () => `
