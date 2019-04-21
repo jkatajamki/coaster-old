@@ -32,11 +32,11 @@ export const findUserByUsername = async (username) => {
   return resultRows.length > 0 ? resultRows[0] : null;
 };
 
-export const createNewUser = (username, createdAt, email, password, salt) => {
+export const insertNewUser = (username, email, password, salt, createdAt) => {
   const updatedAt = createdAt;
   const params = [username, createdAt, email, password, salt, updatedAt];
   const queryFn = () => `
-  INSERT INTO coster_users
+  INSERT INTO coaster_users
     (username, created_at, email, user_password, salt, updated_at)
   VALUES
     ($1, $2, $3, $4, $5, $6);
