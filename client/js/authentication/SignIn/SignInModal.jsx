@@ -6,7 +6,7 @@ import SignInForm from './SignInForm';
 import { toggleSignInModal } from '../AuthenticationActions';
 
 class SignInModal extends Component {
-  toggleModal = () => {
+  toggleModal() {
     this.props.toggleSignInModal();
   };
 

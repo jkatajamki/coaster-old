@@ -1,23 +1,22 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/fontawesome-free-solid/';
 import stateToProps from '../utilities/stateToProps';
 import { dismissAlert } from './AlertActions';
 
-class Alerts extends Component {
-  getAlertBoxClassNames = alertClass => `alert-box alert alert-dismissable ${alertClass}`;
+const getAlertBoxClassNames = alertClass => `alert-box alert alert-dismissable ${alertClass}`;
 
-  getCloseIconClassNames = alertClass => `close-alert-box-icon ${alertClass}`;
+const getCloseIconClassNames = alertClass => `close-alert-box-icon ${alertClass}`;
 
-  handleClose = (type, alertClass) => {
+class Alerts extends PureComponent {
+  handleClose (type, alertClass) {
     this.props.dismissAlert(type, alertClass);
   };
 
   render() {
-    const { alerts } = this.props;
-    const { allAlerts } = alerts;
-    const { getAlertBoxClassNames, getCloseIconClassNames, handleClose } = this;
+    const { alerts: { allAlerts } } = this.props;
+    const { handleClose } = this;
 
     return (
       <div id="alertsBlock" className="px-5">

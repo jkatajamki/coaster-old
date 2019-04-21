@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import bindState from '../utilities/bindState';
-import { validIcon, errorIcon } from '../components/form-components/FormIcons';
-import LabeledInput from '../components/form-components/LabeledInput';
+import { validIcon, errorIcon } from '../form-components/FormIcons';
+import LabeledInput from '../form-components/LabeledInput';
 import {
   validateUsername,
   validatePassword,
@@ -12,39 +11,36 @@ import {
 import stateToProps from '../utilities/stateToProps';
 import { signUpRequest } from './AuthenticationActions';
 
-const getResetFormState = () => ({
-  email: '',
-  username: '',
-  password: '',
-  passwordAgain: '',
-  validatingEmail: false,
-  emailValid: true,
-});
-
 class SignUpForm extends Component {
-  state = getResetFormState();
+  constructor(props) {
+    super(props);
 
-  bind = bindState(this);
+    this.state = {
+      email: '',
+      username: '',
+      password: '',
+      passwordAgain: '',
+      validatingEmail: false,
+      emailValid: true,
+    };
+  }
 
-  validateForm = ({
-    username,
-    email,
-    password,
-    passwordAgain,
-  }) => ({
-    isUsernameValid: validateUsername(username),
-    isEmailValid: validateEmail(email),
-    isPasswordValid: validatePassword(password),
-    isPasswordAgainValid: validatePasswordAgain(password, passwordAgain),
-  });
+  validateForm(username, email, password, passwordAgain) {
+    return {
+      isUsernameValid: validateUsername(username),
+      isEmailValid: validateEmail(email),
+      isPasswordValid: validatePassword(password),
+      isPasswordAgainValid: validatePasswordAgain(password, passwordAgain),
+    }
+  }
 
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     event.preventDefault();
 
     const { username, email, password } = this.state;
 
     this.props.signUpRequest(email, username, password);
-  };
+  }
 
   render() {
     const { bind, handleSubmit, validateForm } = this;

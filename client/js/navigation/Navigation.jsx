@@ -9,19 +9,25 @@ import getMenuItems from '../items/getMenuItems';
 import stateToProps from '../utilities/stateToProps';
 import logoImage from '../../img/coaster.png';
 
-const getResetNavState = () => ({
-  expanded: false,
-});
-
 class Navigation extends React.Component {
-  state = getResetNavState();
+  constructor(props) {
+    super(props);
 
-  getCollapseNavClasses = (menuItemTitle, routeTitle) => classNames(
-    'nav-link',
-    { active: menuItemTitle === routeTitle }
-  );
+    this.state = {
+      expanded: false
+    };
 
-  handleNavToggle = () => {
+    this.handleNavToggle = this.handleNavToggle.bind(this);
+  }
+
+  getCollapseNavClasses(menuItemTitle, routeTitle) {
+    return classNames(
+      'nav-link',
+      { active: menuItemTitle === routeTitle }
+    );
+  }
+
+  handleNavToggle() {
     this.setState({
       expanded: !this.state.expanded,
     });

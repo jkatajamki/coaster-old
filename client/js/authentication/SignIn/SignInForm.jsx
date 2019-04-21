@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import stateToProps from '../../utilities/stateToProps';
-import bindState from '../../utilities/bindState';
-import LabeledInput from '../../components/form-components/LabeledInput';
+import LabeledInput from '../../form-components/LabeledInput';
 import { validateUsername, validatePassword } from '../../../../common/utils/validation/validation';
-import { validIcon, errorIcon } from '../../components/form-components/FormIcons';
+import { validIcon, errorIcon } from '../../form-components/FormIcons';
 import { signInRequest } from '../AuthenticationActions';
 
 class SignInForm extends Component {
-  state = {
-    username: '',
-    password: '',
-  };
+  constructor(props) {
+    super(props);
 
-  bind = bindState(this);
+    this.state = {
+      username: '',
+      password: '',
+    }
+  }
 
-  validateForm = ({ username, password }) => ({
-    isUsernameValid: validateUsername(username),
-    isPasswordValid: validatePassword(password),
-  });
+  validateForm(username, password) {
+    return {
+      isUsernameValid: validateUsername(username),
+      isPasswordValid: validatePassword(password),
+    };
+  }
 
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     event.preventDefault();
 
     const { username, password } = this.state;
@@ -28,7 +31,7 @@ class SignInForm extends Component {
     this.props.signInRequest(username, password);
   };
 
-  render = () => {
+  render() {
     const { bind, handleSubmit, validateForm } = this;
     const { username, password } = this.state;
     const { isUsernameValid, isPasswordValid } = validateForm({
