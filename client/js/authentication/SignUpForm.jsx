@@ -26,6 +26,8 @@ class SignUpForm extends Component {
       validatingEmail: false,
       emailValid: true,
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   validateForm(username, email, password, passwordAgain) {

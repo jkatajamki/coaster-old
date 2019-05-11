@@ -2,6 +2,7 @@ import moment from 'moment';
 import { insertNewUser } from '../user/user';
 import handleError from '../routing/handle-error';
 import { createPassword } from './cryptography';
+import { assertSignUpIsValid } from './assert';
 
 export const createNewUser = async (username, email, password) => {
   const now = moment();

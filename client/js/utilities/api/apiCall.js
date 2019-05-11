@@ -13,7 +13,7 @@ const handleResponse = async (response) => {
 const getFetchOptions = (headers, method, body) => ({
   headers,
   method,
-  body: body ? JSON.stringify(body) : {},
+  ...(body && { body: JSON.stringify(body) })
 });
 
 const getHeaders = (token) => {
@@ -33,13 +33,7 @@ const apiCall = async (method, path, token = null, body = {}) => {
   const options = getFetchOptions(headers, method, method === 'POST' ? body : null);
   const url = `${getApiUrl()}${path}`;
 
-  try {
-    return await handleResponse(await fetch(url, options));
-  } catch (e) {
-    // handle fetch error
-    console.error('Error in apiCall:', e);
-    throw e;
-  }
+  return handleResponse(await fetch(url, options));
 };
 
 export default apiCall;
