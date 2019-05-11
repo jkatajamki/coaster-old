@@ -1,14 +1,20 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import stateToProps from '../../utilities/stateToProps';
 import SignInForm from './SignInForm';
 import { toggleSignInModal } from '../AuthenticationActions';
 
-class SignInModal extends Component {
+class SignInModal extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
   toggleModal() {
     this.props.toggleSignInModal();
-  };
+  }
 
   render() {
     const { toggleModal } = this;

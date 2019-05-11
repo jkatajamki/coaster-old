@@ -5,11 +5,13 @@ import LabeledInput from '../../form-components/LabeledInput';
 import { validateUsername, validatePassword } from '../../../../common/utils/validation/validation';
 import { validIcon, errorIcon } from '../../form-components/FormIcons';
 import { signInRequest } from '../AuthenticationActions';
+import bindState from '../../utilities/bind-state';
 
 class SignInForm extends Component {
   constructor(props) {
     super(props);
 
+    this.bindToState = bindState(this);
     this.state = {
       username: '',
       password: '',
@@ -32,11 +34,9 @@ class SignInForm extends Component {
   };
 
   render() {
-    const { bind, handleSubmit, validateForm } = this;
+    const { bindToState, handleSubmit, validateForm } = this;
     const { username, password } = this.state;
-    const { isUsernameValid, isPasswordValid } = validateForm({
-      username, password,
-    });
+    const { isUsernameValid, isPasswordValid } = validateForm(username, password);
     const usernameHint = isUsernameValid && isUsernameValid ? validIcon : errorIcon;
     const passwordHint = isPasswordValid && isPasswordValid ? validIcon : errorIcon;
     const signInButtonDisabled = !(isUsernameValid && isPasswordValid);
@@ -50,7 +50,7 @@ class SignInForm extends Component {
           hint={usernameHint}
           hintType={isUsernameValid ? 'success' : 'error'}
           placeholder="Your username"
-          {...bind('username')}
+          {...bindToState('username')}
         />
         <LabeledInput
           id="signupPassword"
@@ -59,7 +59,7 @@ class SignInForm extends Component {
           hint={passwordHint}
           hintType={isPasswordValid ? 'success' : 'error'}
           placeholder="************"
-          {...bind('password')}
+          {...bindToState('password')}
         />
 
         <div className="buttons-area text-center">

@@ -10,10 +10,13 @@ import {
 } from '../../../common/utils/validation/validation';
 import stateToProps from '../utilities/stateToProps';
 import { signUpRequest } from './AuthenticationActions';
+import bindState from '../utilities/bind-state';
 
 class SignUpForm extends Component {
   constructor(props) {
     super(props);
+
+    this.bindToState = bindState(this);
 
     this.state = {
       email: '',
@@ -43,7 +46,7 @@ class SignUpForm extends Component {
   }
 
   render() {
-    const { bind, handleSubmit, validateForm } = this;
+    const { bindToState, handleSubmit, validateForm } = this;
     const {
       username,
       email,
@@ -56,12 +59,12 @@ class SignUpForm extends Component {
       isEmailValid,
       isPasswordValid,
       isPasswordAgainValid,
-    } = validateForm({
+    } = validateForm(
       username,
       email,
       password,
       passwordAgain,
-    });
+    );
 
     const emailHint = isEmailValid && isEmailValid ? validIcon : errorIcon;
     const usernameHint = isUsernameValid && isUsernameValid ? validIcon : errorIcon;
@@ -85,7 +88,7 @@ class SignUpForm extends Component {
           hint={usernameHint}
           hintType={isUsernameValid ? 'success' : 'error'}
           placeholder="BeheritFangirl96"
-          {...bind('username')}
+          {...bindToState('username')}
         />
         <LabeledInput
           id="signupEmail"
@@ -94,7 +97,7 @@ class SignUpForm extends Component {
           hint={emailHint}
           hintType={isEmailValid ? 'success' : 'error'}
           placeholder="example@email.com"
-          {...bind('email')}
+          {...bindToState('email')}
         />
         <LabeledInput
           id="signupPassword"
@@ -103,7 +106,7 @@ class SignUpForm extends Component {
           hint={passwordHint}
           hintType={isPasswordValid ? 'success' : 'error'}
           placeholder="************"
-          {...bind('password')}
+          {...bindToState('password')}
         />
         <LabeledInput
           id="signupPasswordAgain"
@@ -112,7 +115,7 @@ class SignUpForm extends Component {
           hint={passwordAgainHint}
           hintType={isPasswordAgainValid ? 'success' : 'error'}
           placeholder="************"
-          {...bind('passwordAgain')}
+          {...bindToState('passwordAgain')}
         />
 
         <div className="buttons-area text-right">
