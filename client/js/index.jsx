@@ -3,15 +3,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import createHistory from 'history/createBrowserHistory';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import Root from './Root';
-import configureStore from './store/configureStore';
+import configureStore, { history } from './store/configureStore';
 import setSignedInStatus from './utilities/authentication/helpers';
 
 (async () => {
   const store = configureStore();
-  const history = createHistory();
   await setSignedInStatus(store);
 
   const render = (Component) => {

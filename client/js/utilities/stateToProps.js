@@ -1,3 +1,3 @@
-const stateToProps = (...args) => state => (({ ...args }) => ({ ...args }))(state);
+const stateToProps = () => state => (({ ...args }) => ({ ...args }))(state);
 
 export default stateToProps;

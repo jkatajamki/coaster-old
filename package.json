@@ -8,7 +8,8 @@
     "test": "jest",
     "test-backend": "mocha backend/**/*.test.js --require @babel/register",
     "build": "./build.sh",
-    "server": "babel-watch backend/server.js"
+    "dev:server": "babel-watch backend/server.js",
+    "dev:client": "webpack-dev-server"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "1.1.7",
@@ -19,6 +20,7 @@
     "body-parser": "1.18.2",
     "bootstrap": "4.1.1",
     "classnames": "2.2.5",
+    "connected-react-router": "6.4.0",
     "db-migrate": "0.11.5",
     "db-migrate-pg": "0.5.0",
     "express": "4.16.4",
@@ -29,14 +31,13 @@
     "moment": "2.22.1",
     "pg": "7.4.2",
     "prop-types": "15.6.1",
-    "react": "16.2.0",
-    "react-dom": "16.2.0",
-    "react-redux": "5.0.7",
-    "react-router": "4.2.0",
-    "react-router-dom": "4.2.2",
-    "react-router-redux": "5.0.0-alpha.9",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-redux": "7.0.3",
+    "react-router": "5.0.0",
+    "react-router-dom": "5.0.0",
     "reactstrap": "6.0.1",
-    "redux": "3.7.2",
+    "redux": "4.0.1",
     "redux-thunk": "2.2.0"
   },
   "devDependencies": {

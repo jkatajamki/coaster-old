@@ -18,6 +18,7 @@ const config = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     filename: 'bundle.js',
   },
 
@@ -50,15 +51,25 @@ const config = {
 
   module: {
     rules: [
-      { test: /\.jsx?$/, exclude: /node_modules/, use: {
-        loader: 'babel-loader',
-        options: { presets: ['@babel/preset-env'] },
-      } },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: { presets: ['@babel/preset-env', '@babel/preset-react'] },
+        },
+      },
       { test: /\.s[ac]ss$/, loader: ['style-loader', 'css-loader', 'sass-loader'], exclude: /node_modules/ },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
       { test: /\.(png|svg|jpg|gif)$/, loader: 'file-loader' },
-    ]
-  }
+    ],
+  },
+
+  devServer: {
+    historyApiFallback: true,
+  },
+
+
 };
 
 module.exports = config;
