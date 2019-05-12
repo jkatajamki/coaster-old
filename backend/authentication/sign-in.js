@@ -30,7 +30,7 @@ export const authenticationSuccesfulResponse = (user) => {
     user: userObject,
     token,
   };
-}
+};
 
 export const signIn = async (req, res) => {
   const { username, email, password } = req.body;

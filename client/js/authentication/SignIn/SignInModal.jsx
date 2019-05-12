@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import stateToProps from '../../utilities/stateToProps';
 import SignInForm from './SignInForm';
-import { toggleSignInModal } from '../AuthenticationActions';
+import { toggleSignInModal } from '../AuthenticationActions';
 
 class SignInModal extends PureComponent {
   constructor(props) {
@@ -13,12 +13,13 @@ class SignInModal extends PureComponent {
   }
 
   toggleModal() {
-    this.props.toggleSignInModal();
+    const { toggleSignInModal } = this.props;
+    toggleSignInModal();
   }
 
   render() {
     const { toggleModal } = this;
-    const { displaySignInModal } = this.props.authentication;
+    const { authentication: { displaySignInModal } } = this.props;
 
     return (
       <Modal

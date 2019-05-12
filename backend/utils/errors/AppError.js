@@ -6,8 +6,8 @@ export default class AppError extends Error {
 
     this.name = this.constructor.name;
 
-    this.message = message ||
-      'Something went wrong with Coaster. Please try again in a bit.';
+    this.message = message
+      || 'Something went wrong with Coaster. Please try again in a bit.';
 
     this.status = status || 500;
   }

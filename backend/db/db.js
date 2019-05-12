@@ -1,7 +1,7 @@
 import pg from 'pg';
+import dotenv from 'dotenv';
 import logError from '../utils/log-error';
 import dbConfig from './db-config';
-import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -11,16 +11,11 @@ const envDbConfig = dbConfig[ENV];
 const pgPool = new pg.Pool({
   database: envDbConfig.database || 'coaster',
   host: envDbConfig.host || 'localhost',
-  //idleTimeoutMillis: cfg.db.idleTimeoutMillis,
-  //max: cfg.db.poolSize,
-  //min: 1,
   password: envDbConfig.password,
   port: envDbConfig.port || 5432,
-  //ssl: cfg.db.ssl,
-  user: envDbConfig.user
+  user: envDbConfig.user,
 });
 
-// todo: add proper debugging for backend
 (async () => {
   try {
     await pgPool.connect();

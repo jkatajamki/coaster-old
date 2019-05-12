@@ -1,18 +1,17 @@
+import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import AuthenticationRequiredError from '../utils/errors/AuthenticationRequiredError';
 import { findUserById } from '../user/user';
 
 dotenv.config();
 
-export function isNotLoggedIn(req, res, next) {
+export const isNotLoggedIn = (req, res, next) => {
   if (!req.user) {
     next();
     return;
   }
 
-  res.status(403).send({
-    error: 'User is already authenticated'
-  });
+  res.status(403).send({ error: 'User is already authenticated' });
   next();
 };
 
@@ -21,7 +20,7 @@ export const getTokenFromReq = (req) => {
   return authHeader
     ? authHeader.substring(authHeader.indexOf(' ') + 1)
     : null;
-}
+};
 
 export const getUserIdFromToken = (token) => {
   const { TOKEN_ALGORITHM, TOKEN_SECRET } = process.env;
@@ -36,7 +35,7 @@ export const getUserIdFromToken = (token) => {
   }
 };
 
-export async function authenticationMiddleware(req, _, next) {
+export const authenticationMiddleware = async (req, _, next) => {
   const token = getTokenFromReq(req);
   const userId = getUserIdFromToken(token);
   if (!userId) {
@@ -46,9 +45,9 @@ export async function authenticationMiddleware(req, _, next) {
   const userById = await findUserById(userId);
   req.user = userById;
   next();
-}
+};
 
-export function isLoggedIn(req, res, next) {
+export const isLoggedIn = (req, res, next) => {
   if (!req.user) {
     const error = new AuthenticationRequiredError();
     res.status(error.status).send(error);

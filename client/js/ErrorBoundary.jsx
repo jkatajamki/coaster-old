@@ -36,7 +36,9 @@ class ErrorBoundary extends Component {
       </div>
     );
 
-    return this.state.hasError ? errorPage : this.props.children;
+    const { hasError } = this.state;
+    const { children } = this.props;
+    return hasError ? errorPage : children;
   }
 }
 

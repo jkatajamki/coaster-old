@@ -13,7 +13,7 @@ const handleResponse = async (response) => {
 const getFetchOptions = (headers, method, body) => ({
   headers,
   method,
-  ...(body && { body: JSON.stringify(body) })
+  ...(body && { body: JSON.stringify(body) }),
 });
 
 const getHeaders = (token) => {

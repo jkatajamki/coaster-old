@@ -10,7 +10,7 @@ export const makeSignUpValidityAssertions = (
   email,
   password,
   userByEmail,
-  userByUsername,
+  userByUsername
 ) => {
   if (userByUsername) {
     throw new UserAlreadyExistsError('Unfortunately, this username is already taken. Please try a different one.');
@@ -30,16 +30,16 @@ export const makeSignUpValidityAssertions = (
   return true;
 };
 
-export const assertSignUpIsValid = (username, email, password) => {
-  return Promise.all([findUserByEmail(email), findUserByUsername(username)])
-    .then(([userByEmail, userByUsername]) => makeSignUpValidityAssertions(
-      username,
-      email,
-      password,
-      userByEmail,
-      userByUsername,
-    ));
-};
+export const assertSignUpIsValid = (username, email, password) => Promise.all([
+  findUserByEmail(email),
+  findUserByUsername(username),
+]).then(([userByEmail, userByUsername]) => makeSignUpValidityAssertions(
+  username,
+  email,
+  password,
+  userByEmail,
+  userByUsername
+));
 
 export const assertSignInIsValid = async (password, user) => {
   if (!user) {
@@ -57,4 +57,4 @@ export const assertSignInIsValid = async (password, user) => {
   } catch (err) {
     throw new AuthenticationFailedError('Password authentication failed', 500);
   }
-}
+};

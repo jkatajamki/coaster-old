@@ -28,10 +28,11 @@ class Navigation extends React.Component {
   }
 
   handleNavToggle() {
+    const { expanded } = this.state;
     this.setState({
-      expanded: !this.state.expanded,
+      expanded: !expanded,
     });
-  };
+  }
 
   render() {
     const {
@@ -41,7 +42,7 @@ class Navigation extends React.Component {
       getCollapseNavClasses,
     } = this;
 
-    const { isAuthenticated } = this.props.authentication;
+    const { authentication: { isAuthenticated } } = this.props;
     const menuItems = getMenuItems()
       .filter(item => (item.displayCondition ? item.displayCondition(isAuthenticated) : true));
 

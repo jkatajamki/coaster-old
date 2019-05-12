@@ -1,3 +1,5 @@
+/* eslint no-console: "off" */
+
 import dotenv from 'dotenv';
 
 dotenv.config();

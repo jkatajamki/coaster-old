@@ -11,8 +11,8 @@ import Authentication from './authentication/Authentication';
 import SignInModal from './authentication/SignIn/SignInModal';
 import Alerts from './alerts/Alerts';
 
-const Root = ({ history }) => (
-  <ConnectedRouter history={history} >
+const Root = (history) => (
+  <ConnectedRouter history={history}>
     <main>
       <Navigation />
       <Alerts />
@@ -25,6 +25,6 @@ const Root = ({ history }) => (
       </ErrorBoundary>
     </main>
   </ConnectedRouter>
-);
+)
 
 export default hot(module)(Root);

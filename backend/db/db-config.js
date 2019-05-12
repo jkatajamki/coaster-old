@@ -17,10 +17,10 @@ const development = {
   host: DB_HOST,
   port: DB_PORT,
   env: ENV,
-}
+};
 
 const dbConfig = {
   development,
-}
+};
 
 module.exports = dbConfig;

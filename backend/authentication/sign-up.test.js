@@ -12,7 +12,7 @@ const validCredentials = {
 
 describe('Should create hashed password and salt', async () => {
   const plaintext = validCredentials.password;
-  const { hash, salt } = await createPassword(plaintext)
+  const { hash, salt } = await createPassword(plaintext);
   expect(hash).to.not.be.undefined;
   expect(hash).to.be.a('string');
   expect(hash).to.not.be.empty;

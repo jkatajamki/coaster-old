@@ -5,19 +5,18 @@ import { signOut } from './AuthenticationActions';
 
 class SignOut extends Component {
   componentDidMount() {
-    this.props.signOut();
+    const { signOut } = this.props;
+    signOut();
   }
 
   render() {
-    const { isAuthenticated, currentUser } = this.props.authentication;
+    const { authentication: { isAuthenticated, currentUser } } = this.props;
     const { username } = currentUser;
 
     return (
       <div className="sign-out">
         <div className="container">
-
           <div className="row justify-content-md-center">
-
             <div className="col-lg-6">
               <div className="main-center content-section">
                 <p className="sign-out-message">
@@ -25,9 +24,7 @@ class SignOut extends Component {
                 </p>
               </div>
             </div>
-
           </div>
-
         </div>
       </div>
     );

@@ -29,9 +29,9 @@ class SignInForm extends Component {
     event.preventDefault();
 
     const { username, password } = this.state;
-
-    this.props.signInRequest(username, password);
-  };
+    const { signInRequest } = this.props;
+    signInRequest(username, password);
+  }
 
   render() {
     const { bindToState, handleSubmit, validateForm } = this;

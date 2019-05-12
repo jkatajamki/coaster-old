@@ -23,8 +23,6 @@ class SignUpForm extends Component {
       username: '',
       password: '',
       passwordAgain: '',
-      validatingEmail: false,
-      emailValid: true,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,8 +41,9 @@ class SignUpForm extends Component {
     event.preventDefault();
 
     const { username, email, password } = this.state;
+    const { signUpRequest } = this.props;
 
-    this.props.signUpRequest(email, username, password);
+    signUpRequest(email, username, password);
   }
 
   render() {

@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import logError from '../utils/log-error';
 
 dotenv.config();
 
@@ -8,7 +9,7 @@ const handleError = (err, _, res) => {
   const status = err.status ? err.status : 500;
 
   if (env === 'development') {
-    console.error(err);
+    logError(err);
   }
 
   // do not leak stack traces to user unless env is development

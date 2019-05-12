@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/fontawesome-free-solid/';
 import stateToProps from '../utilities/stateToProps';
-import { dismissAlert } from './AlertActions';
+import { dismissAlert } from './AlertActions';
 
 const getAlertBoxClassNames = alertClass => `alert-box alert alert-dismissable ${alertClass}`;
 
@@ -11,8 +11,9 @@ const getCloseIconClassNames = alertClass => `close-alert-box-icon ${alertClass}
 
 class Alerts extends PureComponent {
   handleClose (type, alertClass) {
-    this.props.dismissAlert(type, alertClass);
-  };
+    const { dismissAlert } = this.props;
+    dismissAlert(type, alertClass);
+  }
 
   render() {
     const { alerts: { allAlerts } } = this.props;

@@ -1,6 +1,6 @@
 import dbQuery from '../db/db';
 
-export const mapUserFields = (userResult) => ({
+export const mapUserFields = userResult => ({
   userId: userResult.user_id,
   username: userResult.username,
   email: userResult.email,
@@ -46,7 +46,7 @@ export const findUserById = async (userId) => {
   `;
   const resultRows = await dbQuery(queryFn, params);
   return resultRows.length > 0 ? mapUserFields(resultRows[0]) : null;
-}
+};
 
 export const findUserBySignInWord = async (signInWord) => {
   const params = [signInWord];
@@ -75,7 +75,7 @@ export const findUserBySignInWord = async (signInWord) => {
     updatedAt: userResult.updated_at,
     password: userResult.user_password,
   };
-}
+};
 
 export const insertNewUser = (username, email, password, salt, createdAt) => {
   const updatedAt = createdAt;
