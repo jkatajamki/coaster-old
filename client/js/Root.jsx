@@ -11,7 +11,7 @@ import Authentication from './authentication/Authentication';
 import SignInModal from './authentication/SignIn/SignInModal';
 import Alerts from './alerts/Alerts';
 
-const Root = (history) => (
+const Root = ({ history }) => (
   <ConnectedRouter history={history}>
     <main>
       <Navigation />
