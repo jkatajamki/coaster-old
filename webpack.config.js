@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const config = {
   mode: 'development',
@@ -36,6 +35,7 @@ const config = {
       template: path.resolve(__dirname, 'client/index.html'),
       filename: 'index.html',
       inject: 'body',
+      favicon: './client/img/coaster.png',
     }),
 
     new webpack.HotModuleReplacementPlugin(),
@@ -43,8 +43,6 @@ const config = {
     new webpack.DefinePlugin({
       __dev: true,
     }),
-
-    new FaviconsWebpackPlugin('./client/img/coaster.png'),
   ],
 
   devtool: 'cheap-module-eval-source-map',
