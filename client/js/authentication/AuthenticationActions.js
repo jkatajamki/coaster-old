@@ -26,7 +26,13 @@ const signUpRequest = (email, username, password) => (async (dispatch) => {
 
   try {
     const signUpResponse = await userSignUp(username, email, password);
-    dispatch(signUpSuccess(signUpResponse));
+    const { userObject, token } = signUpResponse;
+    if (userObject == null || token == null) {
+      dispatch(addAlert('sign-in', 'Error', e.error.message, 'alert-danger'));
+      dispatch(signUpFailure());
+      return;
+    }
+    dispatch(signUpSuccess({ token, userObject }));
   } catch (e) {
     dispatch(addAlert('sign-in', 'Error', e.error.message, 'alert-danger'));
     dispatch(signUpFailure(e));

@@ -77,7 +77,7 @@ export const findUserBySignInWord = async (signInWord) => {
   };
 };
 
-export const insertNewUser = (username, email, password, salt, createdAt) => {
+export const insertNewUser = async (username, email, password, salt, createdAt) => {
   const updatedAt = createdAt;
   const params = [username, createdAt, email, password, salt, updatedAt];
   const queryFn = () => `
@@ -86,5 +86,6 @@ export const insertNewUser = (username, email, password, salt, createdAt) => {
   VALUES
     ($1, $2, $3, $4, $5, $6);
   `;
-  return dbQuery(queryFn, params);
+  await dbQuery(queryFn, params);
+  return findUserByUsername(username);
 };

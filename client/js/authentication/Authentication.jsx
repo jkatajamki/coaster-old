@@ -9,12 +9,11 @@ import { toggleSignInModal } from './AuthenticationActions';
 const Authentication = (props) => {
   const { toggleSignInModal, authentication } = props;
   const { currentUser, isAuthenticated } = authentication;
-  const { username } = currentUser;
+  const username = currentUser.get('username');
 
   return (
     <div className="authentication">
       <div className="container">
-
         <div className="row mt-4 justify-content-md-center">
           <div className="col-lg-6 text-center">
             { !isAuthenticated
@@ -23,9 +22,7 @@ const Authentication = (props) => {
             }
           </div>
         </div>
-
         <div className="row justify-content-md-center">
-
           <div className="col-lg-6">
             <div className="main-authentication main-center content-section">
               { !isAuthenticated
@@ -34,9 +31,7 @@ const Authentication = (props) => {
               }
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
   );

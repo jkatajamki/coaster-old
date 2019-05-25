@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { insertNewUser } from '../user/user';
 import handleError from '../routing/handle-error';
-import { createPassword } from './cryptography';
+import { createPassword, authenticationSuccessfulResponse } from './cryptography';
 import { assertSignUpIsValid } from './assert';
 
 export const createNewUser = async (username, email, password) => {
@@ -15,6 +15,11 @@ export const signUp = (req, res) => {
 
   return assertSignUpIsValid(username, email, password)
     .then(() => createNewUser(username, email, password))
-    .then(() => res.status(200).send({ message: 'Signed up succesfully!' }))
+    .then((user) => authenticationSuccessfulResponse(user))
+    .then(({ user, token }) => res.status(200).send({
+      message: 'Signed up succesfully!',
+      userObject: user,
+      token,
+    }))
     .catch(err => handleError(err, req, res));
 };
