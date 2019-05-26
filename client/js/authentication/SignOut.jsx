@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import stateToProps from '../utilities/stateToProps';
 import { signOut } from './AuthenticationActions';
 
-class SignOut extends Component {
+class SignOut extends PureComponent {
   componentDidMount() {
     const { signOut } = this.props;
     signOut();

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button, Collapse } from 'reactstrap';
@@ -9,7 +9,7 @@ import getMenuItems from '../items/getMenuItems';
 import stateToProps from '../utilities/stateToProps';
 import logoImage from '../../img/coaster.png';
 
-class Navigation extends React.Component {
+class Navigation extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -68,9 +68,9 @@ class Navigation extends React.Component {
                     key={menuItem.id}
                     className={getCollapseNavClasses(menuItem.title, routeTitle)}
                   >
-                    <a href={menuItem.url}>
+                    <Link to={menuItem.url}>
                       {menuItem.title}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { validIcon, errorIcon } from '../form-components/FormIcons';
 import LabeledInput from '../form-components/LabeledInput';
@@ -12,7 +12,7 @@ import stateToProps from '../utilities/stateToProps';
 import { signUpRequest } from './AuthenticationActions';
 import bindState from '../utilities/bind-state';
 
-class SignUpForm extends Component {
+class SignUpForm extends PureComponent {
   constructor(props) {
     super(props);
 
