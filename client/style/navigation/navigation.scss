@@ -1,5 +1,8 @@
 @import '../variables';
 
+.navbar-nav {
+  flex-direction: row;
+}
 
 .navbar-brand-text {
   color: $light-background;
@@ -14,22 +17,25 @@
 }
 
 .nav-toggle-icon {
-  font-size: 2em;
+  font-size: $size-4;
   color: $orange;
 }
 
 .navbar {
   li.nav-link {
     a {
+      margin: 0 $size-1;
       color: $light-background;
-      padding: 0.1em 0;
+      padding: 0.1rem 0;
+      line-height: $size-2;
     }
   }
 
   li.active {
     a {
+      margin: 0 $size-2;
       border-bottom: 2px solid $orange;
-      font-size: 1.25em;
+      font-size: $size-2;
     }
   }
 }
@@ -41,5 +47,5 @@
   border: 3px solid $primary-background;
   border-right: 0;
   border-radius: 5px;
-  margin-right: 0.66em;
+  margin-right: $size-3;
 }

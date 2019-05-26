@@ -29,9 +29,7 @@ class Navigation extends PureComponent {
 
   handleNavToggle() {
     const { expanded } = this.state;
-    this.setState({
-      expanded: !expanded,
-    });
+    this.setState({ expanded: !expanded });
   }
 
   render() {
@@ -68,7 +66,7 @@ class Navigation extends PureComponent {
                     key={menuItem.id}
                     className={getCollapseNavClasses(menuItem.title, routeTitle)}
                   >
-                    <Link to={menuItem.url}>
+                    <Link to={menuItem.url} className="nav-link">
                       {menuItem.title}
                     </Link>
                   </li>
