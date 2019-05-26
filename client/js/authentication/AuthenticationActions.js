@@ -28,7 +28,7 @@ const signUpRequest = (email, username, password) => (async (dispatch) => {
     const signUpResponse = await userSignUp(username, email, password);
     const { userObject, token } = signUpResponse;
     if (userObject == null || token == null) {
-      dispatch(addAlert('sign-in', 'Error', e.error.message, 'alert-danger'));
+      dispatch(addAlert('sign-in', 'Error', 'Sign up failed', 'alert-danger'));
       dispatch(signUpFailure());
       return;
     }
@@ -64,7 +64,13 @@ const signInRequest = (username, password) => (async (dispatch) => {
 
   try {
     const signInResponse = await userSignIn(username, password);
-    dispatch(signInSuccess(signInResponse));
+    const { userObject, token } = signInResponse;
+    if (userObject == null || token == null) {
+      dispatch(addAlert('sign-in', 'Error', 'Sign in failed', 'alert-danger'));
+      dispatch(signUpFailure());
+      return;
+    }
+    dispatch(signInSuccess({ token, userObject }));
   } catch (e) {
     dispatch(addAlert('sign-in', 'Error', e.error.message, 'alert-danger'));
     dispatch(signInFailure(e));

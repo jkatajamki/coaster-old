@@ -33,7 +33,7 @@ export const authenticationSuccessfulResponse = (user) => {
     email: user.email,
   };
   return {
-    user: userObject,
+    userObject,
     token,
   };
 };

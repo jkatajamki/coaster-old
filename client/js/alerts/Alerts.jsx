@@ -10,6 +10,12 @@ const getAlertBoxClassNames = alertClass => `alert-box alert alert-dismissable $
 const getCloseIconClassNames = alertClass => `close-alert-box-icon ${alertClass}`;
 
 class Alerts extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.handleClose = this.handleClose.bind(this);
+  }
+
   handleClose (type, alertClass) {
     const { dismissAlert } = this.props;
     dismissAlert(type, alertClass);

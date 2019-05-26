@@ -15,7 +15,8 @@ class SignInForm extends Component {
     this.state = {
       username: '',
       password: '',
-    }
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   validateForm(username, password) {
