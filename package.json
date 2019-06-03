@@ -12,7 +12,7 @@
     "dev:client": "webpack-dev-server"
   },
   "dependencies": {
-    "@fortawesome/fontawesome": "1.1.7",
+    "@fortawesome/fontawesome": "1.1.8",
     "@fortawesome/fontawesome-free-solid": "5.0.12",
     "@fortawesome/react-fontawesome": "0.0.19",
     "autoprefixer": "8.2.0",
