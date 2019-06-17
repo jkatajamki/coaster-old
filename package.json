@@ -15,7 +15,7 @@
     "@fortawesome/fontawesome": "1.1.8",
     "@fortawesome/fontawesome-free-solid": "5.0.12",
     "@fortawesome/react-fontawesome": "0.0.19",
-    "autoprefixer": "8.2.0",
+    "autoprefixer": "9.6.0",
     "bcrypt": "3.0.0",
     "body-parser": "1.18.2",
     "bootstrap": "4.3.1",
