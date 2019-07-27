@@ -2,10 +2,11 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router } from 'react-router';
 import { Provider } from 'react-redux';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import Root from './Root';
-import configureStore, { history } from './store/configureStore';
+import configureStore from './store/configureStore';
 import setSignedInStatus from './utilities/authentication/helpers';
 
 (async () => {
@@ -15,7 +16,7 @@ import setSignedInStatus from './utilities/authentication/helpers';
   const render = (Component) => {
     ReactDOM.render(
       <Provider store={store}>
-        <Component store={store} history={history} />
+        <Component store={store} />
       </Provider>,
       document.querySelector('#root')
     );
