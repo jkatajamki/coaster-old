@@ -27,7 +27,7 @@ const config = {
     alias: {
       common: path.resolve(__dirname, 'common'),
       images: path.resolve(__dirname, 'client/img'),
-      'react-dom': '@hot-loader/react-dom'
+      'react-dom': '@hot-loader/react-dom',
     },
   },
 

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from 'react-router';
 import { Provider } from 'react-redux';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import Root from './Root';

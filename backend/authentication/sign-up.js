@@ -15,7 +15,7 @@ export const signUp = (req, res) => {
 
   return assertSignUpIsValid(username, email, password)
     .then(() => createNewUser(username, email, password))
-    .then((user) => authenticationSuccessfulResponse(user))
+    .then(user => authenticationSuccessfulResponse(user))
     .then(({ userObject, token }) => res.status(200).send({
       message: 'Signed up succesfully!',
       userObject,

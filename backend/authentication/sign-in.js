@@ -3,7 +3,7 @@ import handleError from '../routing/handle-error';
 import { assertSignInIsValid } from './assert';
 import { authenticationSuccessfulResponse } from './cryptography';
 
-export const signIn = async (req, res) => {
+export default async (req, res) => {
   const { username, email, password } = req.body;
   const signInWord = username || email;
   try {
