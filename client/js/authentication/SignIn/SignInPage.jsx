@@ -2,12 +2,14 @@ import React from 'react';
 import SignInForm from './SignInForm';
 import { connect } from 'react-redux';
 import stateToProps from '../../utilities/stateToProps';
+import AuthSuccess from '../AuthSuccess';
 
 const SignInPage = (props) => {
-  const { authentication: { isAuthenticated } } = props;
+  const { authentication: { isAuthenticated, currentUser } } = props;
+  const { username } = currentUser;
 
   if (isAuthenticated) {
-    return;
+    return <AuthSuccess username={username} />;
   }
 
   return (
