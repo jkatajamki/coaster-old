@@ -63,7 +63,7 @@ class SignInForm extends PureComponent {
           {...bindToState('password')}
         />
 
-        <div className="buttons-area text-center">
+        <div className="buttons-area text-right">
           <input
             id="signInButton"
             type="submit"

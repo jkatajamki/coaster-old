@@ -5,9 +5,9 @@ import { Button, Collapse } from 'reactstrap';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/fontawesome-free-solid/';
 import classNames from 'classnames/bind';
-import getMenuItems from '../items/getMenuItems';
 import stateToProps from '../utilities/stateToProps';
 import logoImage from '../../img/coaster.png';
+import navMenuItems from './nav-menu-items';
 
 class Navigation extends PureComponent {
   constructor(props) {
@@ -41,8 +41,7 @@ class Navigation extends PureComponent {
     } = this;
 
     const { authentication: { isAuthenticated } } = this.props;
-    const menuItems = getMenuItems()
-      .filter(item => (item.displayCondition ? item.displayCondition(isAuthenticated) : true));
+    const menuItems = navMenuItems.filter(item => (item.displayCondition ? item.displayCondition(isAuthenticated) : true));
 
     const currentRouteMenuItem = menuItems.find(item => item.url === props.location.pathname);
     const routeTitle = currentRouteMenuItem ? currentRouteMenuItem.title : '';

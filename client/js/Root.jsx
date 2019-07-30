@@ -9,6 +9,7 @@ import SignOut from './authentication/SignOut';
 import Authentication from './authentication/Authentication';
 import SignInModal from './authentication/SignIn/SignInModal';
 import Alerts from './alerts/Alerts';
+import SignInPage from './authentication/SignIn/SignInPage';
 
 const Root = () => (
   <Router>
@@ -20,6 +21,7 @@ const Root = () => (
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/authentication" component={Authentication} />
+        <Route path="/signIn" component={SignInPage} />
         <Route path="/signOut" component={SignOut} />
       </ErrorBoundary>
     </main>

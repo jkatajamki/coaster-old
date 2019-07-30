@@ -14,14 +14,6 @@ const Authentication = (props) => {
   return (
     <div className="authentication">
       <div className="container">
-        <div className="row mt-4 justify-content-md-center">
-          <div className="col-lg-6 text-center">
-            { !isAuthenticated
-              ? (<SignInButton toggleSignInModal={toggleSignInModal} />)
-              : (<h2>Welcome to Coaster.</h2>)
-            }
-          </div>
-        </div>
         <div className="row justify-content-md-center">
           <div className="col-lg-6">
             <div className="main-authentication main-center content-section">
@@ -30,6 +22,14 @@ const Authentication = (props) => {
                 : (<AuthSuccess username={username} />)
               }
             </div>
+          </div>
+        </div>
+        <div className="row mt-4 justify-content-md-center">
+          <div className="col-lg-6 text-center">
+            { !isAuthenticated
+              ? (<SignInButton toggleSignInModal={toggleSignInModal} />)
+              : (<h2>Welcome to Coaster.</h2>)
+            }
           </div>
         </div>
       </div>

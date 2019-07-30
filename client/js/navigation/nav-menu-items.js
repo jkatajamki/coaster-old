@@ -1,4 +1,4 @@
-const getMenuItems = () => [
+export default [
   {
     id: 1,
     url: '/',
@@ -11,16 +11,20 @@ const getMenuItems = () => [
   },
   {
     id: 3,
-    url: '/authentication',
+    url: '/signIn',
     title: 'Sign in',
     displayCondition: isAuthenticated => !isAuthenticated,
   },
   {
     id: 4,
+    url: '/authentication',
+    title: 'Sign up',
+    displayCondition: isAuthenticated => !isAuthenticated,
+  },
+  {
+    id: 5,
     url: '/signOut',
     title: 'Sign out',
     displayCondition: isAuthenticated => isAuthenticated,
   },
 ];
-
-export default getMenuItems;
