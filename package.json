@@ -22,7 +22,7 @@
     "classnames": "2.2.6",
     "db-migrate": "0.11.5",
     "db-migrate-pg": "0.5.0",
-    "express": "4.16.4",
+    "express": "4.17.1",
     "express-session": "1.16.1",
     "immutable": "3.8.2",
     "jsonwebtoken": "8.5.1",
