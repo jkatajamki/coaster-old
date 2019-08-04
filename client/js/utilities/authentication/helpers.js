@@ -5,11 +5,15 @@ const setSignedInStatus = async (store) => {
   const token = localStorage.getItem('token');
 
   if (token) {
-    const response = await getUser(token);
-    if (response.token) {
+    try {
+      const response = await getUser(token);
+      if (!response || response.token == null) {
+        store.dispatch(signOut());
+        return;
+      }
       store.dispatch(signInSuccess(response));
-    } else {
-      store.dispatch(signOut());
+    } catch (err) {
+      store.dispatch(signOut(err));
     }
   }
 };

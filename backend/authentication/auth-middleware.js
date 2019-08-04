@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import AuthenticationRequiredError from '../utils/errors/AuthenticationRequiredError';
 import { findUserById } from '../user/user';
+import AuthenticationExpiredError from '../utils/errors/AuthenticationExpiredError';
 
 dotenv.config();
 
@@ -22,6 +23,13 @@ export const getTokenFromReq = (req) => {
     : null;
 };
 
+export const handleTokenError = (err) => {
+  if (err.name === 'TokenExpiredError') {
+    throw new AuthenticationExpiredError();
+  }
+  return null;
+}
+
 export const getUserIdFromToken = (token) => {
   const { TOKEN_ALGORITHM, TOKEN_SECRET } = process.env;
 
@@ -31,20 +39,25 @@ export const getUserIdFromToken = (token) => {
     });
     return id;
   } catch (err) {
-    return null;
+    return handleTokenError(err);
   }
 };
 
-export const authenticationMiddleware = async (req, _, next) => {
+export const authenticationMiddleware = async (req, res, next) => {
   const token = getTokenFromReq(req);
-  const userId = getUserIdFromToken(token);
-  if (!userId) {
+  try {
+    const userId = getUserIdFromToken(token);
+    if (!userId) {
+      next();
+      return;
+    }
+    const userById = await findUserById(userId);
+    req.user = userById;
     next();
-    return;
+  } catch (err) {
+    res.status(err.status).send(err);
+    next();
   }
-  const userById = await findUserById(userId);
-  req.user = userById;
-  next();
 };
 
 export const isLoggedIn = (req, res, next) => {

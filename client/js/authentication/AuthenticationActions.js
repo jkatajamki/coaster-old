@@ -1,11 +1,11 @@
 import { userSignIn, userSignUp } from '../utilities/authentication/authentication';
 import { addAlert } from '../alerts/AlertActions';
 
-const toggleSignInModal = () => dispatch => dispatch({
+export const toggleSignInModal = () => dispatch => dispatch({
   type: 'TOGGLE_SIGN_IN_MODAL',
 });
 
-const signUpSuccess = (signUpResponse) => {
+export const signUpSuccess = (signUpResponse) => {
   localStorage.setItem('token', signUpResponse.token);
 
   return {
@@ -14,12 +14,12 @@ const signUpSuccess = (signUpResponse) => {
   };
 };
 
-const signUpFailure = error => ({
+export const signUpFailure = error => ({
   type: 'SIGN_UP_FAILURE',
   data: error,
 });
 
-const signUpRequest = (email, username, password) => (async (dispatch) => {
+export const signUpRequest = (email, username, password) => (async (dispatch) => {
   dispatch({
     type: 'SIGN_UP_REQUEST',
   });
@@ -39,7 +39,7 @@ const signUpRequest = (email, username, password) => (async (dispatch) => {
   }
 });
 
-const signInSuccess = (signInResponse) => {
+export const signInSuccess = (signInResponse) => {
   localStorage.setItem('token', signInResponse.token);
 
   return {
@@ -48,7 +48,7 @@ const signInSuccess = (signInResponse) => {
   };
 };
 
-const signInFailure = (error) => {
+export const signInFailure = (error) => {
   localStorage.removeItem('token');
 
   return {
@@ -57,7 +57,7 @@ const signInFailure = (error) => {
   };
 };
 
-const signInRequest = (username, password) => (async (dispatch) => {
+export const signInRequest = (username, password) => (async (dispatch) => {
   dispatch({
     type: 'SIGN_IN_REQUEST',
   });
@@ -77,21 +77,14 @@ const signInRequest = (username, password) => (async (dispatch) => {
   }
 });
 
-const signOut = () => {
+export const signOut = err => {
+  if (err) {
+    dispatch(addAlert('sign-in', 'Error', err.message, 'alert-danger'));
+  }
+
   localStorage.removeItem('token');
 
   return {
     type: 'SIGN_OUT',
   };
-};
-
-export {
-  toggleSignInModal,
-  signUpRequest,
-  signUpSuccess,
-  signUpFailure,
-  signInRequest,
-  signInSuccess,
-  signInFailure,
-  signOut,
 };
