@@ -1,16 +1,16 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { validIcon, errorIcon } from '../form-components/FormIcons';
-import LabeledInput from '../form-components/LabeledInput';
+import { validIcon, errorIcon } from '../../form-components/FormIcons';
+import LabeledInput from '../../form-components/LabeledInput';
 import {
   validateUsername,
   validatePassword,
   validatePasswordAgain,
   validateEmail,
-} from '../../../common/utils/validation/validation';
-import stateToProps from '../utilities/stateToProps';
-import { signUpRequest } from './AuthenticationActions';
-import bindState from '../utilities/bind-state';
+} from '../../../../common/utils/validation/validation';
+import stateToProps from '../../utilities/stateToProps';
+import { signUpRequest } from '../AuthenticationActions';
+import bindState from '../../utilities/bind-state';
 
 class SignUpForm extends PureComponent {
   constructor(props) {

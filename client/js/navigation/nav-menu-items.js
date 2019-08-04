@@ -17,7 +17,7 @@ export default [
   },
   {
     id: 4,
-    url: '/authentication',
+    url: '/signUp',
     title: 'Sign up',
     displayCondition: isAuthenticated => !isAuthenticated,
   },

@@ -6,7 +6,7 @@ import Home from './home/Home';
 import About from './about/About';
 import ErrorBoundary from './ErrorBoundary';
 import SignOut from './authentication/SignOut';
-import Authentication from './authentication/Authentication';
+import SignUpPage from './authentication/SignUp/SignUpPage';
 import SignInModal from './authentication/SignIn/SignInModal';
 import Alerts from './alerts/Alerts';
 import SignInPage from './authentication/SignIn/SignInPage';
@@ -20,7 +20,7 @@ const Root = () => (
         <SignInModal />
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
-        <Route path="/authentication" component={Authentication} />
+        <Route path="/signUp" component={SignUpPage} />
         <Route path="/signIn" component={SignInPage} />
         <Route path="/signOut" component={SignOut} />
       </ErrorBoundary>

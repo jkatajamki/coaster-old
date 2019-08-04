@@ -44,6 +44,7 @@ class SignInForm extends PureComponent {
 
     return (
       <form className="sign-in-form" onSubmit={handleSubmit}>
+        <h2>Sign in to Coaster.</h2>
         <LabeledInput
           id="signInUsername"
           label="Username"
