@@ -8,7 +8,7 @@
     "test": "jest",
     "test-backend": "mocha backend/**/*.test.js --require @babel/register",
     "build": "./build.sh",
-    "dev:server": "babel-watch backend/server.js",
+    "dev:server": "nodemon --exec babel-node backend/server.js",
     "dev:client": "webpack-dev-server"
   },
   "dependencies": {
