@@ -10,15 +10,17 @@ const validCredentials = {
   userByUsername: undefined,
 };
 
-describe('Should create hashed password and salt', async () => {
-  const plaintext = validCredentials.password;
-  const { hash, salt } = await createPassword(plaintext);
-  expect(hash).to.not.be.undefined;
-  expect(hash).to.be.a('string');
-  expect(hash).to.not.be.empty;
-  expect(salt).to.not.be.undefined;
-  expect(salt).to.be.a('string');
-  expect(salt).to.not.be.empty;
+describe('Cryptography tests', () => {
+  it('Should generate hashed password and salt', async () => {
+    const plaintext = validCredentials.password;
+    const { hash, salt } = await createPassword(plaintext);
+    expect(hash).to.not.be.undefined;
+    expect(hash).to.be.a('string');
+    expect(hash).to.not.be.empty;
+    expect(salt).to.not.be.undefined;
+    expect(salt).to.be.a('string');
+    expect(salt).to.not.be.empty;
+  });
 });
 
 describe('Sign up assertion will throw error for non-valid cases', () => {
