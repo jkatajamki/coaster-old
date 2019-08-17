@@ -28,7 +28,7 @@ export const handleTokenError = (err) => {
     throw new AuthenticationExpiredError();
   }
   return null;
-}
+};
 
 export const getUserIdFromToken = (token) => {
   const { TOKEN_ALGORITHM, TOKEN_SECRET } = process.env;

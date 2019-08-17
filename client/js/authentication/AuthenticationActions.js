@@ -77,14 +77,14 @@ export const signInRequest = (username, password) => (async (dispatch) => {
   }
 });
 
-export const signOut = err => {
+export const signOut = err => dispatch => {
   if (err) {
     dispatch(addAlert('sign-in', 'Error', err.message, 'alert-danger'));
   }
 
-  localStorage.removeItem('token');
+  localStorage.removeItem('token')
 
-  return {
+  dispatch({
     type: 'SIGN_OUT',
-  };
+  });
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ mainSectionChildren, bottomSectionChildren }) => {
+const AuthenticationPage = ({ mainSectionChildren, bottomSectionChildren }) => {
   return (
     <div className="authentication">
       <div className="container">
@@ -20,3 +20,5 @@ export default ({ mainSectionChildren, bottomSectionChildren }) => {
     </div>
   );
 }
+
+export default AuthenticationPage;

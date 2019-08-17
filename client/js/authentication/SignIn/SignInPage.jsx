@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SignInForm from './SignInForm';
 import { connect } from 'react-redux';
+import SignInForm from './SignInForm';
 import stateToProps from '../../utilities/stateToProps';
 import AuthSuccess from '../AuthSuccess';
 import AuthenticationPage from '../AuthenticationPage';
@@ -13,7 +13,7 @@ const SignInPage = (props) => {
   const bottomSection = !isAuthenticated
     ? (
       <Link to="/signUp" className="nav-link">
-        Don't have an account yet? Sign Up here!
+        Don&apos;t have an account yet? Sign Up here!
       </Link>
     ) : (<h2>Welcome to Coaster.</h2>)
 
