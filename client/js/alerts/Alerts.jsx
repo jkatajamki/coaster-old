@@ -43,28 +43,16 @@ const AlertBox = ({ alert, handleClose }) => {
   )
 }
 
-class Alerts extends PureComponent {
-  constructor(props) {
-    super(props);
+const Alerts = ({ alerts, dismissAlert }) => {
+  const handleClose = (type, alertClass) => dismissAlert(type, alertClass)
 
-    this.handleClose = this.handleClose.bind(this);
-  }
+  const { allAlerts } = alerts;
 
-  handleClose (type, alertClass) {
-    const { dismissAlert } = this.props;
-    dismissAlert(type, alertClass);
-  }
-
-  render() {
-    const { alerts: { allAlerts } } = this.props;
-    const { handleClose } = this;
-
-    return (
-      <div id="alertsBlock" className="px-5">
-        { allAlerts.map(alert => <AlertBox alert={alert} handleClose={handleClose} />)}
-      </div>
-    );
-  }
+  return (
+    <div id="alertsBlock" className="px-5">
+      {allAlerts.map((alert, key) => <AlertBox key={key} alert={alert} handleClose={handleClose} />)}
+    </div>
+  )
 }
 
 export default connect(stateToProps('alerts'), {
