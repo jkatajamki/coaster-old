@@ -41,15 +41,13 @@ export const assertSignUpIsValid = (username, email, password) => Promise.all([
   userByUsername
 ));
 
-export const assertSignInIsValid = (password, user) => {
-  return new Promise(async (resolve, reject) => {
-    if (!user) {
-      reject(new AuthenticationFailedError());
-    }
-    const isPasswordCorrect = await comparePassword(password, user);
-    const timeout = Math.floor(Math.random() * 50) + 50;
-    setTimeout(function() {
-      resolve(isPasswordCorrect);
-    }, timeout);
-  });
-};
+export const assertSignInIsValid = (password, user) => new Promise(async (resolve, reject) => {
+  if (!user) {
+    reject(new AuthenticationFailedError());
+  }
+  const isPasswordCorrect = await comparePassword(password, user);
+  const timeout = Math.floor(Math.random() * 50) + 50;
+  setTimeout(() => {
+    resolve(isPasswordCorrect);
+  }, timeout);
+});
