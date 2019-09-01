@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/fontawesome-free-solid/';
@@ -50,7 +50,7 @@ const Alerts = ({ alerts, dismissAlert }) => {
 
   return (
     <div id="alertsBlock" className="px-5">
-      {allAlerts.map((alert, key) => <AlertBox key={key} alert={alert} handleClose={handleClose} />)}
+      {allAlerts.map((alert, _, key) => <AlertBox key={key} alert={alert} handleClose={handleClose} />)}
     </div>
   )
 }

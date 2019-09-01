@@ -1,84 +1,75 @@
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import stateToProps from '../../utilities/stateToProps';
 import LabeledInput from '../../form-components/LabeledInput';
 import { validateUsername, validatePassword } from '../../../../common/utils/validation/validation';
 import { validIcon, errorIcon } from '../../form-components/FormIcons';
 import { signInRequest } from '../AuthenticationActions';
-import bindState from '../../utilities/bind-state';
 
-class SignInForm extends PureComponent {
-  constructor(props) {
-    super(props);
+const SignInForm = ({ signInRequest }) => {
+  const [signInForm, setValues] = useState({
+    username: '',
+    password: '',
+  });
 
-    this.bindToState = bindState(this);
-    this.state = {
-      username: '',
-      password: '',
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  validateForm(username, password) {
-    return {
-      isUsernameValid: validateUsername(username),
-      isPasswordValid: validatePassword(password),
-    };
-  }
-
-  handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
-
-    const { username, password } = this.state;
-    const { signInRequest } = this.props;
+    const { username, password } = signInForm;
     signInRequest(username, password);
-  }
+  };
 
-  render() {
-    const { bindToState, handleSubmit, validateForm } = this;
-    const { username, password } = this.state;
-    const { isUsernameValid, isPasswordValid } = validateForm(username, password);
-    const usernameHint = isUsernameValid && isUsernameValid ? validIcon : errorIcon;
-    const passwordHint = isPasswordValid && isPasswordValid ? validIcon : errorIcon;
-    const signInButtonDisabled = !(isUsernameValid && isPasswordValid);
+  const updateField = (event) => {
+    const { target: { value, name } } = event;
+    setValues({
+      ...signInForm,
+      [name]: value,
+    });
+  };
 
-    return (
-      <form className="sign-in-form" onSubmit={handleSubmit}>
-        <h2>Sign in to Coaster.</h2>
-        <LabeledInput
-          id="signInUsername"
-          label="Username"
-          type="text"
-          hint={usernameHint}
-          hintType={isUsernameValid ? 'success' : 'error'}
-          placeholder="Your username"
-          {...bindToState('username')}
+  const { isUsernameValid, isPasswordValid } = (() => ({
+    isUsernameValid: validateUsername(signInForm.username),
+    isPasswordValid: validatePassword(signInForm.password),
+  }))();
+  const signInButtonDisabled = !(isUsernameValid && isPasswordValid);
+  const usernameHint = isUsernameValid && isUsernameValid ? validIcon : errorIcon;
+  const passwordHint = isPasswordValid && isPasswordValid ? validIcon : errorIcon;
+
+  return (
+    <form className="sign-in-form" onSubmit={handleSubmit}>
+      <h2>Sign in to Coaster.</h2>
+      <LabeledInput
+        id="signInUsername"
+        label="Username"
+        type="text"
+        name="username"
+        hint={usernameHint}
+        hintType={isUsernameValid ? 'success' : 'error'}
+        placeholder="Your username"
+        value={signInForm.username}
+        onChange={updateField}
+      />
+      <LabeledInput
+        id="signupPassword"
+        label="Password"
+        type="password"
+        name="password"
+        hint={passwordHint}
+        hintType={isPasswordValid ? 'success' : 'error'}
+        placeholder="************"
+        value={signInForm.password}
+        onChange={updateField}
+      />
+      <div className="buttons-area text-right">
+        <input
+          id="signInButton"
+          type="submit"
+          color="primary"
+          className="btn btn-primary my-2 px-5"
+          value="Sign in."
+          disabled={signInButtonDisabled}
         />
-        <LabeledInput
-          id="signupPassword"
-          label="Password"
-          type="password"
-          hint={passwordHint}
-          hintType={isPasswordValid ? 'success' : 'error'}
-          placeholder="************"
-          {...bindToState('password')}
-        />
-
-        <div className="buttons-area text-right">
-          <input
-            id="signInButton"
-            type="submit"
-            color="primary"
-            className="btn btn-primary my-2 px-5"
-            value="Sign in."
-            disabled={signInButtonDisabled}
-          />
-        </div>
-      </form>
-    );
-  }
+      </div>
+    </form>
+  );
 }
 
-export default connect(stateToProps('authentication'), {
-  signInRequest,
-})(SignInForm);
+export default connect(null, { signInRequest })(SignInForm);
