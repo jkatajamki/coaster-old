@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button, Collapse } from 'reactstrap';
@@ -9,74 +9,54 @@ import stateToProps from '../utilities/stateToProps';
 import logoImage from '../../img/coaster.png';
 import navMenuItems from './nav-menu-items';
 
-class Navigation extends PureComponent {
-  constructor(props) {
-    super(props);
+const Navigation = ({ location, authentication: { isAuthenticated } }) => {
+  const [navState, setNavState] = useState({
+    expanded: false,
+  });
 
-    this.state = {
-      expanded: false
-    };
+  const getCollapseNavClasses = (menuItemTitle, routeTitle) => classNames(
+    'nav-link',
+    { active: menuItemTitle === routeTitle },
+  );
 
-    this.handleNavToggle = this.handleNavToggle.bind(this);
-  }
+  const toggleNav = () => setNavState({
+    expanded: !navState.expanded
+  });
 
-  getCollapseNavClasses(menuItemTitle, routeTitle) {
-    return classNames(
-      'nav-link',
-      { active: menuItemTitle === routeTitle }
-    );
-  }
+  const menuItems = navMenuItems.filter(item => (item.displayCondition ? item.displayCondition(isAuthenticated) : true));
+  const currentRouteMenuItem = menuItems.find(item => item.url === location.pathname);
+  const routeTitle = currentRouteMenuItem ? currentRouteMenuItem.title : '';
 
-  handleNavToggle() {
-    const { expanded } = this.state;
-    this.setState({ expanded: !expanded });
-  }
+  return (
+    <header>
+      <div className="navbar navbar-dark bg-dark box-shadow">
+        <div className="container d-flex justify-content-between">
+          <Link to="/" className="navbar-brand d-flex align-items-center">
+            <img id="coasterLogo" src={logoImage} alt="Coaster logo" />
+            <span className="navbar-brand-text">{routeTitle}</span>
+          </Link>
+          <Button className="navbar-toggler navbar-toggle" data-toggle="collapse" onClick={toggleNav}>
+            <FontAwesomeIcon className="nav-toggle-icon" icon={navState.expanded ? faAngleUp : faAngleDown} />
+          </Button>
 
-  render() {
-    const {
-      props,
-      handleNavToggle,
-      state,
-      getCollapseNavClasses,
-    } = this;
-
-    const { authentication: { isAuthenticated } } = this.props;
-    const menuItems = navMenuItems.filter(item => (item.displayCondition ? item.displayCondition(isAuthenticated) : true));
-
-    const currentRouteMenuItem = menuItems.find(item => item.url === props.location.pathname);
-    const routeTitle = currentRouteMenuItem ? currentRouteMenuItem.title : '';
-
-    return (
-      <header>
-        <div className="navbar navbar-dark bg-dark box-shadow">
-          <div className="container d-flex justify-content-between">
-            <Link to="/" className="navbar-brand d-flex align-items-center">
-              <img id="coasterLogo" src={logoImage} alt="Coaster logo" />
-              <span className="navbar-brand-text">{routeTitle}</span>
-            </Link>
-            <Button className="navbar-toggler navbar-toggle" data-toggle="collapse" onClick={handleNavToggle}>
-              <FontAwesomeIcon className="nav-toggle-icon" icon={state.expanded ? faAngleUp : faAngleDown} />
-            </Button>
-
-            <Collapse isOpen={state.expanded} className="navbar-collapse">
-              <ul className="nav navbar-nav">
-                {menuItems.map(menuItem => (
-                  <li
-                    key={menuItem.id}
-                    className={getCollapseNavClasses(menuItem.title, routeTitle)}
-                  >
-                    <Link to={menuItem.url} className="nav-link">
-                      {menuItem.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Collapse>
-          </div>
+          <Collapse isOpen={navState.expanded} className="navbar-collapse">
+            <ul className="nav navbar-nav">
+              {menuItems.map(menuItem => (
+                <li
+                  key={menuItem.id}
+                  className={getCollapseNavClasses(menuItem.title, routeTitle)}
+                >
+                  <Link to={menuItem.url} className="nav-link">
+                    {menuItem.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Collapse>
         </div>
-      </header>
-    );
-  }
+      </div>
+    </header>
+  );
 }
 
 export default withRouter(connect(stateToProps('authentication'))(Navigation));

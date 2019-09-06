@@ -7,8 +7,7 @@ import SignInButton from '../SignIn/SignInButton';
 import { toggleSignInModal } from '../AuthenticationActions';
 import AuthenticationPage from '../AuthenticationPage';
 
-const Authentication = (props) => {
-  const { toggleSignInModal, authentication } = props;
+const Authentication = ({ toggleSignInModal, authentication }) => {
   const { currentUser, isAuthenticated } = authentication;
   const username = currentUser.get('username');
   const mainSection = !isAuthenticated ? (<SignUpForm />) : (<AuthSuccess username={username} />)
