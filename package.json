@@ -5,9 +5,13 @@
   "scripts": {
     "lint": "eslint --ext js --ext jsx .",
     "lint:fix": "eslint --ext js --ext jsx --fix .",
-    "test": "jest",
+    "test:unit": "jest",
     "test-backend": "mocha backend/**/*.test.js --require @babel/register",
-    "build": "./build.sh",
+    "cypress:open": "cypress open",
+    "build:client": "NODE_ENV=production webpack",
+    "build:clean": "rm -rf dist/ && mkdir dist/ && rm -rf backend/dist/ && mkdir backend/dist/",
+    "build:server": "babel -d ./backend/dist/ ./backend/ -s",
+    "build": "npm run build:clean && npm run build:client && npm run build:server",
     "dev:server": "nodemon --exec babel-node backend/server.js",
     "dev:client": "webpack-dev-server"
   },
@@ -52,6 +56,7 @@
     "babel-loader": "8.0.6",
     "chai": "4.2.0",
     "css-loader": "3.2.0",
+    "cypress": "3.4.1",
     "dotenv": "8.1.0",
     "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.1",
