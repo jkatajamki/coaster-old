@@ -1,10 +1,11 @@
 version: '3'
+
 services:
 
   backend:
-    build: ./backend
+    build: ./
     depends_on:
-      - postgres
+      - db
     ports:
       - "5000:5000"
 

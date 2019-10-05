@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ "$NODE_ENV" == "development" ] ; then
-  npm run dev
+  npm run dev:server
 else
-  npm run start
+  npm run start:server
 fi

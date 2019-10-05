@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Coaster.",
   "scripts": {
+    "compose": "docker-compose -f docker-compose.yml up",
     "lint": "eslint --ext js --ext jsx .",
     "lint:fix": "eslint --ext js --ext jsx --fix .",
     "test:unit": "jest",
@@ -13,7 +14,8 @@
     "build:server": "babel -d ./backend/dist/ ./backend/ -s",
     "build": "npm run build:clean && npm run build:client && npm run build:server",
     "dev:server": "nodemon --exec babel-node backend/server.js",
-    "dev:client": "webpack-dev-server"
+    "dev:client": "webpack-dev-server",
+    "start:server": "node backend/dist/server.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "1.1.8",
