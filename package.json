@@ -3,19 +3,21 @@
   "version": "1.0.0",
   "description": "Coaster.",
   "scripts": {
-    "compose": "docker-compose -f docker-compose.yml up",
+    "compose": "docker-compose -f docker-compose.yml up --build",
     "lint": "eslint --ext js --ext jsx .",
     "lint:fix": "eslint --ext js --ext jsx --fix .",
+    "test": "npm run test:unit",
     "test:unit": "jest",
     "test-backend": "mocha backend/**/*.test.js --require @babel/register",
     "cypress:open": "cypress open",
     "build:client": "NODE_ENV=production webpack",
-    "build:clean": "rm -rf dist/ && mkdir dist/ && rm -rf backend/dist/ && mkdir backend/dist/",
-    "build:server": "babel -d ./backend/dist/ ./backend/ -s",
-    "build": "npm run build:clean && npm run build:client && npm run build:server",
+    "build:clean": "rm -rf dist/ && mkdir dist/ && mkdir -p dist/backend && mkdir -p dist/common",
+    "build:server": "babel -d ./dist/backend/ ./backend/ -s",
+    "build:common": "babel -d ./dist/common/ ./common/ -s",
+    "build": "npm run build:clean && npm run build:common && npm run build:client && npm run build:server",
     "dev:server": "nodemon --exec babel-node backend/server.js",
     "dev:client": "webpack-dev-server",
-    "start:server": "node backend/dist/server.js"
+    "start:server": "node ./dist/backend/server.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "1.1.8",

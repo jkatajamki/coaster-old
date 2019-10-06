@@ -2,14 +2,8 @@ version: '3'
 
 services:
 
-  backend:
-    build: ./
-    depends_on:
-      - db
-    ports:
-      - "5000:5000"
-
   db:
+    container_name: coaster-db
     image: postgres:11.5-alpine
     environment:
       - POSTGRES_USER=${DB_USERNAME}
@@ -19,6 +13,14 @@ services:
       - "127.0.0.1:5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
+
+  backend:
+    container_name: coaster-node
+    build: ./
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
 
 volumes:
   db_data:
