@@ -45,7 +45,7 @@
     "@babel/polyfill": "7.6.0",
     "@babel/preset-env": "7.6.0",
     "@babel/preset-react": "7.0.0",
-    "@babel/register": "7.6.0",
+    "@babel/register": "7.6.2",
     "@babel/runtime": "7.6.0",
     "@hot-loader/react-dom": "^16.8.6",
     "babel-eslint": "11.0.0-beta.0",
