@@ -1,7 +1,6 @@
 import bcrypt from 'bcrypt';
 import moment from 'moment';
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
 
 export const createPassword = async (password) => {
   const salt = await bcrypt.genSalt(12);
@@ -10,8 +9,6 @@ export const createPassword = async (password) => {
 };
 
 export const comparePassword = (password, user) => bcrypt.compare(password, user.password);
-
-dotenv.config();
 
 const { TOKEN_SECRET, TOKEN_TTL, TOKEN_ALGORITHM } = process.env;
 

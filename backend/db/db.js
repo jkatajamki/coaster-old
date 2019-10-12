@@ -1,9 +1,6 @@
 import pg from 'pg';
-import dotenv from 'dotenv';
 import logError from '../utils/log-error';
 import dbConfig from './db-config';
-
-dotenv.config();
 
 const { ENV } = process.env;
 const envDbConfig = dbConfig[ENV];

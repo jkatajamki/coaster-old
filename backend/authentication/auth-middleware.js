@@ -1,10 +1,7 @@
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
 import AuthenticationRequiredError from '../utils/errors/AuthenticationRequiredError';
 import { findUserById } from '../user/user';
 import AuthenticationExpiredError from '../utils/errors/AuthenticationExpiredError';
-
-dotenv.config();
 
 export const isNotLoggedIn = (req, res, next) => {
   if (!req.user) {

@@ -1,7 +1,4 @@
-import dotenv from 'dotenv';
 import logError from '../utils/log-error';
-
-dotenv.config();
 
 const env = process.env.ENV;
 
