@@ -15,7 +15,7 @@
     "build:server": "babel -d ./dist/backend/ ./backend/ -s",
     "build:common": "babel -d ./dist/common/ ./common/ -s",
     "build": "npm run build:clean && npm run build:common && npm run build:client && npm run build:server",
-    "dev:server": "nodemon --exec babel-node backend/server.js",
+    "dev:server": "nodemon --exec node --require @babel/register backend/server.js",
     "dev:client": "webpack-dev-server",
     "start:server": "node ./dist/backend/server.js"
   },
@@ -49,7 +49,6 @@
   "devDependencies": {
     "@babel/cli": "7.6.2",
     "@babel/core": "7.6.2",
-    "@babel/node": "^7.5.5",
     "@babel/plugin-transform-runtime": "7.6.2",
     "@babel/polyfill": "7.6.0",
     "@babel/preset-env": "7.6.2",
