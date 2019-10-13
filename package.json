@@ -1,13 +1,13 @@
 {
   "name": "coaster",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Coaster.",
   "scripts": {
     "compose": "docker-compose -f docker-compose.yml up --build",
     "lint": "eslint --ext js --ext jsx .",
     "lint:fix": "eslint --ext js --ext jsx --fix .",
     "test": "npm run test:unit",
-    "test:unit": "jest",
+    "test:unit": "jest --setupFiles dotenv/config",
     "test-backend": "mocha backend/**/*.test.js --require @babel/register",
     "cypress:open": "cypress open",
     "build:client": "NODE_ENV=production webpack",
