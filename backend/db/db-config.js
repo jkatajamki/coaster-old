@@ -14,11 +14,28 @@ const development = {
   password: DB_PASSWORD,
   host: DB_HOST,
   port: DB_PORT,
+  env: 'development',
+};
+
+const production = {
+  driver: 'pg',
+  database: DB_NAME,
+  user: DB_USERNAME,
+  password: DB_PASSWORD,
+  host: DB_HOST,
+  port: DB_PORT,
   env: ENV,
 };
 
-const dbConfig = {
-  development,
+const getEnvDbConfig = (env) => {
+  switch (env) {
+    case 'production':
+      return production;
+    case 'test':
+    case 'development':
+    default:
+      return development;
+  }
 };
 
-module.exports = dbConfig;
+module.exports = getEnvDbConfig;

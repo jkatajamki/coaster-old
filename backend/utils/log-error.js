@@ -1,10 +1,18 @@
 /* eslint no-console: "off" */
 
-const logError = (message, error) => {
-  if (process.env.ENV.includes('dev')) {
-    console.error(message);
-    console.error(error);
-  }
+/*
+ * TODO: ERROR LEVELS:
+ * Add environment-specific error level settings to project
+ * Write logs according to configuration
+ */
+
+export const logError = (message, error) => {
+  console.error(message);
+  console.error(error);
 };
 
-export default logError;
+export const logDebug = (...items) => {
+  if (process.env.ENV.includes('dev')) {
+    console.debug(...items);
+  }
+};

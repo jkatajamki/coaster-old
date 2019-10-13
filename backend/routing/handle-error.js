@@ -1,4 +1,4 @@
-import logError from '../utils/log-error';
+import { logError } from '../utils/log-error';
 
 const env = process.env.ENV;
 
