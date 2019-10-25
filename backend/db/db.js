@@ -1,20 +1,18 @@
 import pg from 'pg';
-import dotenv from 'dotenv';
-import logError from '../utils/log-error';
-import dbConfig from './db-config';
-
-dotenv.config();
+import { logError } from '../utils/log-error';
+import getEnvDbConfig from './db-config';
 
 const { ENV } = process.env;
-const envDbConfig = dbConfig[ENV];
+const envDbConfig = getEnvDbConfig(ENV);
 
-const pgPool = new pg.Pool({
+const pgPoolOptions = {
   database: envDbConfig.database || 'coaster',
   host: envDbConfig.host || 'localhost',
   password: envDbConfig.password,
   port: envDbConfig.port || 5432,
   user: envDbConfig.user,
-});
+};
+const pgPool = new pg.Pool(pgPoolOptions);
 
 (async () => {
   try {

@@ -1,14 +1,18 @@
 /* eslint no-console: "off" */
 
-import dotenv from 'dotenv';
+/*
+ * TODO: ERROR LEVELS:
+ * Add environment-specific error level settings to project
+ * Write logs according to configuration
+ */
 
-dotenv.config();
-
-const logError = (message, error) => {
-  if (process.env.ENV.includes('dev')) {
-    console.error(message);
-    console.error(error);
-  }
+export const logError = (message, error) => {
+  console.error(message);
+  console.error(error);
 };
 
-export default logError;
+export const logDebug = (...items) => {
+  if (process.env.ENV.includes('dev')) {
+    console.debug(...items);
+  }
+};

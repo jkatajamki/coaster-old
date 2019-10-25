@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  db:
+    container_name: coaster-db
+    image: postgres:11.5-alpine
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    container_name: coaster-node
+    build: ./
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - ${PORT}:5000
+    environment:
+      - ENV=production
+      - DB_HOST=db
+    env_file: .env
+    volumes:
+      - ./:/usr/src/coasterapp
+      - coaster-backend-modules:/usr/src/coasterapp/node_modules
+
+volumes:
+  db_data:
+  coaster-backend-modules:
